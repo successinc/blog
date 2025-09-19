@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Success Inc. — Travel Agency</title>
+  <meta name="description" content="Success Inc. — Your Trusted Travel Partner in Sylhet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root{
+      --bg: #071226;
+      --bg-gradient: linear-gradient(135deg, #071226 0%, #0a1e3c 100%);
+      --glass-bg: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.12);
+      --accent-green: #22c55e;
+      --accent-green-light: #4ade80;
+      --accent-red: #ef4444;
+      --accent-blue: #3b82f6;
+      --accent-purple: #a855f7;
+      --muted: #b6c2cf;
+      --muted-light: #d1d9e6;
+      --card-radius: 16px;
+      --maxw: 1100px;
+      --glass-blur: 12px;
+      --glass-shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --transition: all 0.3s ease;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;}
+    html,body{height:100%}
+    body{
+      background: var(--bg-gradient);
+      color: #eaf2f8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.2);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-green);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-green-light);
+    }
+
+    /* Hero background image with parallax effect */
+    .hero-bg{
+      background-image: linear-gradient(180deg, rgba(2,6,23,0.35), rgba(2,6,23,0.55)), 
+        url('https://images.unsplash.com/photo-1502920917128-1aa500764b0b?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 20px;
+      position: relative;
+    }
+
+    /* Animated background elements */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .container{max-width:var(--maxw);margin:0 auto;width:100%}
+
+    header{
+      position:fixed;
+      top:18px;left:0;right:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      z-index:100;
+      pointer-events:none;
+      transition: var(--transition);
+    }
+    
+    header.scrolled {
+      top: 10px;
+    }
+    
+    .topbar{
+      pointer-events:auto; 
+      background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)); 
+      border: 1px solid rgba(255,255,255,0.06);
+      backdrop-filter: blur(10px); 
+      -webkit-backdrop-filter: blur(10px);
+      padding:12px 20px; 
+      border-radius:999px; 
+      display:flex; 
+      gap:16px; 
+      align-items:center; 
+      box-shadow: var(--glass-shadow);
+      transition: var(--transition);
+    }
+    
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{height:56px;width:auto;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.6); transition: var(--transition);}
+    .brand:hover img {
+      transform: scale(1.05);
+    }
+    .brand .title{font-weight:700;color:#fff;font-size:1.05rem;letter-spacing:0.2px}
+    .brand .tag{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+    nav.topnav{display:flex;gap:6px;align-items:center}
+    nav.topnav a{
+      pointer-events:auto;
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:600;
+      padding:8px 16px;
+      border-radius:10px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    nav.topnav a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(34,197,94,0.1), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    nav.topnav a:hover::before {
+      left: 100%;
+    }
+    
+    nav.topnav a:hover{
+      background:linear-gradient(90deg, rgba(34,197,94,0.12), rgba(239,68,68,0.06)); 
+      color:#fff;
+      transform: translateY(-2px);
+    }
+
+    /* HERO card (glass) */
+    .hero-card{
+      width:100%;
+      max-width:980px;
+      border-radius:24px;
+      padding:36px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid var(--glass-border);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      box-shadow: var(--glass-shadow);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:center;
+      animation: fadeIn 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(34,197,94,0.05) 0%, transparent 70%);
+      transform: rotate(30deg);
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left h1{
+      font-size:2.4rem;
+      color:#f8fafc;
+      margin-bottom:12px;
+      line-height: 1.2;
+      background: linear-gradient(90deg, #fff, var(--muted-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .hero-left p.lead{
+      color:var(--muted);
+      margin-bottom:20px;
+      font-size: 1.1rem;
+    }
+    
+    .badges{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 20px;
+    }
+    
+    .badge{
+      padding:8px 16px;
+      border-radius:999px;
+      font-weight:700;
+      background:linear-gradient(90deg, rgba(34,197,94,0.12), rgba(34,197,94,0.06)); 
+      color:var(--accent-green); 
+      border:1px solid rgba(34,197,94,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    
+    .badge:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(34, 197, 94, 0.2);
+    }
+
+    /* Booking/search box inside glass */
+    .search{
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border-radius:16px;
+      padding:20px;
+      border:1px solid rgba(255,255,255,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .search::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(34, 197, 94, 0.03), transparent);
+      pointer-events: none;
+    }
+    
+    .fields{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    
+    .fields input, .fields select{
+      flex:1;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(0,0,0,0.2);
+      color:#eaf2f8;
+      transition: var(--transition);
+    }
+    
+    .fields input:focus, .fields select:focus {
+      outline: none;
+      border-color: var(--accent-green);
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+    }
+    
+    .fields input::placeholder{
+      color:rgba(234,242,248,0.5)
+    }
+    
+    .btn-cta{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:12px 20px;
+      border-radius:12px;
+      border:none;
+      background:linear-gradient(90deg,var(--accent-green), #00b34a 60%, var(--accent-red));
+      color:white;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 8px 30px rgba(34,197,94,0.2);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    .btn-cta:hover::before {
+      left: 100%;
+    }
+    
+    .btn-cta:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(34,197,94,0.3);
+    }
+
+    /* Main content sections */
+    main{
+      padding:80px 20px 100px;
+      background:linear-gradient(180deg,rgba(7,18,38,0.0), rgba(7,18,38,0.6)); 
+      position: relative;
+    }
+    
+    main::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 10% 90%, rgba(34, 197, 94, 0.05) 0%, transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.05) 0%, transparent 30%);
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    section{
+      max-width:var(--maxw);
+      margin:60px auto;
+      padding:40px;
+      background:rgba(255,255,255,0.02);
+      border-radius:var(--card-radius);
+      border: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.01), transparent);
+      pointer-events: none;
+    }
+    
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+    }
+
+    h2.section-title{
+      font-size:2rem;
+      color:#fff;
+      margin-bottom:20px;
+      text-align:center;
+      position: relative;
+      display: inline-block;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    h2.section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+      border-radius: 3px;
+    }
+    
+    p.lead-muted{
+      color:var(--muted);
+      text-align:center;
+      max-width:880px;
+      margin:16px auto 28px;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Services cards with subtle glass */
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:24px;
+      margin-top:28px;
+    }
+    
+    .service{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:16px;
+      padding:24px;
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter:blur(6px);
+      transition:transform .3s ease, box-shadow .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .service::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(34, 197, 94, 0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .service:hover::before {
+      opacity: 1;
+    }
+    
+    .service:hover{
+      transform:translateY(-8px);
+      box-shadow:0 18px 40px rgba(2,6,23,0.6);
+    }
+    
+    .service h3{
+      color:#fff;
+      margin-bottom:12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .service h3 i {
+      font-size: 1.4rem;
+      color: var(--accent-green);
+    }
+    
+    .service p{
+      color:var(--muted);
+      font-size:.95rem;
+      line-height: 1.6;
+    }
+
+    /* About card */
+    .about-card{
+      display:flex;
+      gap:28px;
+      align-items:center;
+      padding:28px;
+      border-radius:16px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(34,197,94,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    
+    .about-card img{
+      width:180px;
+      height: 180px;
+      border-radius:12px;
+      object-fit:cover;
+      box-shadow:0 6px 18px rgba(0,0,0,0.6);
+      transition: var(--transition);
+    }
+    
+    .about-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .about-card .txt p{
+      color:var(--muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    /* Contact & social */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:24px;
+    }
+    
+    .contact-card{
+      padding:28px;
+      border-radius:16px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.01), transparent);
+      pointer-events: none;
+    }
+    
+    .contact-item{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin:14px 0;
+      color:var(--muted);
+      transition: var(--transition);
+    }
+    
+    .contact-item:hover {
+      color: var(--muted-light);
+    }
+    
+    .contact-item i {
+      width: 20px;
+      color: var(--accent-green);
+    }
+    
+    .contact-item b{color:#fff}
+    
+    .social-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    
+    .social-buttons a{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      color:#fff;
+      font-weight:700;
+      justify-content:flex-start;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .social-buttons a::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.7s ease;
+    }
+    
+    .social-buttons a:hover::before {
+      left: 100%;
+    }
+    
+    .social-buttons a:hover {
+      transform: translateX(5px);
+    }
+    
+    .fb{background:linear-gradient(90deg, #0f172a, #0b84ff)}
+    .ig{background:linear-gradient(90deg,#833ab4,#fd1d1d,#fcb045)}
+    .wa{background:linear-gradient(90deg,#25D366,#128C7E)}
+    .mailbtn{background:linear-gradient(90deg,#06b6d4,#0ea5a3)}
+
+    /* Form styling */
+    input, select, textarea {
+      transition: var(--transition);
+    }
+    
+    input:hover, select:hover, textarea:hover {
+      border-color: rgba(255,255,255,0.15);
+    }
+    
+    #cstatus {
+      min-height: 20px;
+    }
+
+    /* Footer */
+    footer{
+      padding:32px 20px;
+      text-align:center;
+      color:var(--muted);
+      border-top:1px solid rgba(255,255,255,0.03);
+      background: rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    
+    footer .small{color:var(--muted)}
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+      transition: var(--transition);
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .floating {
+      animation: float 5s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero-card{
+        grid-template-columns:1fr; 
+        padding:28px;
+        text-align: center;
+      }
+      
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+      
+      .about-card{
+        flex-direction:column;
+        text-align: center;
+      }
+      
+      .hero-left h1 {
+        font-size: 2rem;
+      }
+    }
+    
+    @media (max-width:768px){
+      .topbar {
+        flex-direction: column;
+        padding: 16px;
+        border-radius: 20px;
+        gap: 12px;
+      }
+      
+      nav.topnav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .hero-left h1 {
+        font-size: 1.8rem;
+      }
+      
+      section {
+        padding: 28px 20px;
+      }
+    }
+    
+    @media (max-width:520px){
+      .brand img{height:44px}
+      .hero-left h1{font-size:1.6rem}
+      .hero-card{padding:20px}
+      .topbar{padding:12px}
+      
+      .fields {
+        flex-direction: column;
+      }
+      
+      h2.section-title {
+        font-size: 1.6rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Floating header / brand -->
+  <header>
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">
+          <img src="WEB LOGO.png" alt="Success Inc logo">
+          <div>
+            <div class="title">Success.Inc</div>
+            <div class="tag">An Travel Agency</div>
+          </div>
+        </div>
+
+        <nav class="topnav">
+          <a href="#home"><i class="fas fa-home"></i> Home</a>
+          <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+          <a href="#services"><i class="fas fa-concierge-bell"></i> Services</a>
+          <a href="#contact"><i class="fas fa-phone-alt"></i> Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero with travel background -->
+  <section class="hero-bg" id="home" aria-label="Hero">
+    <div class="container">
+      <div class="hero-card" role="region" aria-labelledby="hero-heading">
+
+        <!-- left -->
+        <div class="hero-left">
+          <h1 id="hero-heading">Success Inc. — আপনার ভ্রমণ, আমাদের দায়িত্ব</h1>
+          <p class="lead muted">
+            Quince Tower (Ground Floor), Kodomtoli, Humaun Chattar, Sylhet. আমরা টিকিটিং, ভিসা, এবং কাস্টম প্যাকেজ দিয়ে থাকি।
+          </p>
+
+          <div class="badges">
+            <div class="badge"><i class="fas fa-shield-alt"></i> Trusted</div>
+            <div class="badge" style="color:var(--accent-red); border-color: rgba(239,68,68,0.08); background: linear-gradient(90deg, rgba(239,68,68,0.06), rgba(239,68,68,0.03));"><i class="fas fa-fire"></i> Hot Deals</div>
+            <div class="badge" style="color:#fff; background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border:1px solid rgba(255,255,255,0.06)"><i class="fas fa-headset"></i> 24/7 Support</div>
+          </div>
+
+          <!-- quick features -->
+          <div style="display:flex;gap:14px;margin-top:24px;flex-wrap:wrap">
+            <div style="padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04); transition: var(--transition);" class="floating">
+              <div style="font-weight:700;color:var(--accent-green)"><i class="fas fa-plane"></i> Flight Booking</div>
+              <div style="color:var(--muted);font-size:.92rem">Domestic & Intl</div>
+            </div>
+            <div style="padding:14px 16px;border-radius:12px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04); transition: var(--transition);" class="floating" style="animation-delay: 1s;">
+              <div style="font-weight:700;color:var(--accent-red)"><i class="fas fa-passport"></i> Visa Help</div>
+              <div style="color:var(--muted);font-size:.92rem">Documents & Application</div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- right search/booking -->
+        <div>
+          <div class="search" role="search">
+            <form id="searchForm">
+              <div class="fields">
+                <input type="text" id="from" placeholder="From (City/Port)" aria-label="From">
+                <input type="text" id="to" placeholder="To (Country/City)" aria-label="To">
+              </div>
+              <div class="fields">
+                <input type="date" id="depart" aria-label="Depart date">
+                <select id="pax" aria-label="Passengers">
+                  <option value="1">1 passenger</option>
+                  <option value="2">2 passengers</option>
+                  <option value="3">3 passengers</option>
+                  <option value="4">4+ passengers</option>
+                </select>
+              </div>
+              <div style="display:flex;gap:12px;align-items:center;flex-wrap: wrap;">
+                <button class="btn-cta" type="submit"><i class="fas fa-search"></i> Search & Book</button>
+                <a href="#contact" style="padding:12px 16px;border-radius:12px;text-decoration:none;color:#fff;background:transparent;border:1px solid rgba(255,255,255,0.08); transition: var(--transition);">
+                  <i class="fas fa-envelope"></i> Contact Us
+                </a>
+              </div>
+              <div id="searchResult" style="color:var(--muted);font-size:.9rem;margin-top:14px;min-height: 20px;"></div>
+            </form>
+          </div>
+
+          <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap;justify-content: center;">
+            <a class="fb" href="https://www.facebook.com/success.inc24" target="_blank" style="padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;color:#fff">
+              <i class="fab fa-facebook"></i> Facebook
+            </a>
+            <a class="ig" href="https://www.instagram.com/success.inc22" target="_blank" style="padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;color:#fff">
+              <i class="fab fa-instagram"></i> Instagram
+            </a>
+            <a class="wa" href="https://wa.me/8801613076654" target="_blank" style="padding:12px 16px;border-radius:12px;text-decoration:none;font-weight:700;color:#fff">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- Services -->
+    <section id="services" aria-labelledby="services-title">
+      <h2 class="section-title" id="services-title">আমাদের সেবা</h2>
+      <p class="lead-muted">টিকিটিং, ভিসা, হোটেল বুকিং, কাস্টম প্যাকেজ — আমরা সবকিছুই হাতে সরবরাহ করি।</p>
+
+      <div class="services-grid">
+        <div class="service">
+          <h3><i class="fas fa-plane"></i> Air Ticket Booking</h3>
+          <p>সাশ্রয়ী আন্তর্জাতিক ও স্থানীয় টিকিটিং — সোজা বুকিং এবং ইটিনারি সাপোর্ট।</p>
+        </div>
+        <div class="service">
+          <h3><i class="fas fa-passport"></i> Visa Assistance</h3>
+          <p>মজবুত ডকুমেন্ট চেক, আবেদন সাপোর্ট এবং ফলো-আপ।</p>
+        </div>
+        <div class="service">
+          <h3><i class="fas fa-umbrella-beach"></i> Tour Packages</h3>
+          <p>পরিবার, হানিমুন বা কর্পোরেট প্যাকেজ — কাস্টমাইজড প্ল্যানিং।</p>
+        </div>
+        <div class="service">
+          <h3><i class="fas fa-hotel"></i> Hotel & Transfers</h3>
+          <p>রিসার্ভেশন, এয়ারপোর্ট সেবা এবং লোকাল ট্রান্সফার অ্যারেঞ্জমেন্ট।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" aria-labelledby="about-title">
+      <h2 class="section-title" id="about-title">আমাদের সম্পর্কে</h2>
+      <div class="about-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="travel photo">
+        <div class="txt">
+          <p>
+            Success Inc. হচ্ছে সিলেট ভিত্তিক একটি অভিজ্ঞ ট্রাভেল এজেন্সি। আমরা নিশ্চিত করি আপনার ভ্রমণ সুগঠিত ও ঝটপট হয় — বসে থাকলে আমরা সব কাগজ-পত্র, টিকিট ও হোটেল বাবস্থাই করে দেব। আপনার সন্তুষ্টি আমাদের মূল লক্ষ্য।
+          </p>
+          <p style="margin-top:12px"><b>অফিস:</b> Quince Tower (Ground Floor), Kodomtoli, Humaun Chattar, Sylhet</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 class="section-title" id="contact-title">যোগাযোগ করুন</h2>
+
+      <div class="contact-grid">
+        <div class="contact-card contact-card-left">
+          <div class="contact-item"><i class="fas fa-phone-alt"></i> <b>Telephone:</b>&nbsp; +8809643776654</div>
+          <div class="contact-item"><i class="fas fa-mobile-alt"></i> <b>Mobile / WhatsApp:</b>&nbsp; +8801613076654</div>
+          <div class="contact-item"><i class="fas fa-envelope"></i> <b>Email:</b>&nbsp;
+            <span style="color:var(--muted)">success.inc@mail.com</span>&nbsp;|&nbsp;
+            <span style="color:var(--muted)">success.inc22@gmail.com</span>
+          </div>
+
+          <div style="margin-top:20px">
+            <form id="contactForm" style="display:grid;gap:12px">
+              <input type="text" id="cname" placeholder="আপনার নাম" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.2);color:#fff">
+              <input type="email" id="cemail" placeholder="ইমেইল" required style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.2);color:#fff">
+              <textarea id="cmsg" rows="4" placeholder="মেসেজ" style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:rgba(0,0,0,0.2);color:#fff"></textarea>
+              <div style="display:flex;gap:10px;flex-wrap: wrap;">
+                <button
