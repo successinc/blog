@@ -1,751 +1,1010 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success Inc. | Visa & Flight Specialist — স্বপ্ন পূরণ হোক ভ্রমণের সাথে</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Success Inc. — Travels & Tourism | Sylhet</title>
+    <meta name="description" content="Trusted travel agency in Sylhet — Flight tickets, visit visas, hotel booking, work permits">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0F6E56',
+                        'primary-dark': '#0a5a45',
+                        'primary-light': '#e8f5f0',
+                        secondary: '#185FA5',
+                        'secondary-dark': '#124a82',
+                        'secondary-light': '#e8f0fa',
+                        accent: '#EF9F27',
+                        'accent-dark': '#d48a1e',
+                        'accent-light': '#fef7e8',
+                        coral: '#F97066',
+                        'coral-light': '#fef0ef',
+                    },
+                    fontFamily: {
+                        main: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --primary:#b91c1c;--primary-light:#dc2626;--primary-dark:#991b1b;
-            --accent:#d97706;--accent-light:#f59e0b;
-            --green:#16a34a;--green-light:#22c55e;
-            --dark:#0f172a;--dark-2:#1e293b;
-            --gray-100:#f1f5f9;--gray-200:#e2e8f0;--gray-300:#cbd5e1;
-            --gray-400:#94a3b8;--gray-500:#64748b;--gray-600:#475569;
-            --gray-700:#334155;--white:#ffffff;
-            --shadow-sm:0 1px 3px rgba(0,0,0,0.08);
-            --shadow-md:0 4px 20px rgba(0,0,0,0.08);
-            --shadow-lg:0 12px 40px rgba(0,0,0,0.12);
-            --shadow-xl:0 25px 60px rgba(0,0,0,0.15);
-            --radius:20px;--radius-lg:32px;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; }
+        .hero-slide {
+            position: absolute; inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
         }
-        html{scroll-behavior:smooth}
-        body{font-family:'Inter',sans-serif;background:var(--white);color:var(--dark-2);line-height:1.6;overflow-x:hidden}
-        .container{max-width:1200px;margin:0 auto;padding:0 24px}
-
-        /* PRELOADER */
-        .preloader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;transition:opacity .6s,visibility .6s}
-        .preloader.hidden{opacity:0;visibility:hidden;pointer-events:none}
-        .preloader img{height:80px;animation:pulse 1s ease-in-out infinite}
-        .preloader-bar{width:200px;height:3px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden}
-        .preloader-bar::after{content:'';display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:10px;animation:loading 1.2s ease-in-out infinite}
-        @keyframes loading{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
-        @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-
-        /* TOP BAR */
-        .top-bar{background:var(--dark);color:var(--gray-300);padding:8px 0;font-size:.8rem;position:relative;z-index:101}
-        .top-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-        .top-bar-left{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-        .top-bar-left a{color:var(--gray-300);text-decoration:none;display:flex;align-items:center;gap:6px;transition:.2s}
-        .top-bar-left a:hover{color:var(--accent-light)}
-        .top-bar-right{display:flex;align-items:center;gap:14px}
-        .top-bar-right a{color:var(--gray-300);font-size:.95rem;transition:.2s;text-decoration:none}
-        .top-bar-right a:hover{color:var(--accent-light)}
-        .top-status{display:flex;align-items:center;gap:6px;color:var(--green-light)}
-        .top-status .dot{width:7px;height:7px;border-radius:50%;background:var(--green-light);animation:blink 1.5s infinite}
-        @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-        /* NAVBAR */
-        .navbar{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,.04);transition:all .3s}
-        .navbar.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.08)}
-        .nav-inner{display:flex;justify-content:space-between;align-items:center;padding:12px 0}
-        .logo-area{display:flex;align-items:center;gap:12px}
-        .logo-img{height:52px;width:auto;object-fit:contain}
-        .logo-text h1{font-size:1.4rem;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.1}
-        .tagline{font-size:.65rem;color:var(--gray-500);font-weight:500;letter-spacing:.3px}
-        .nav-links{display:flex;gap:4px;list-style:none;align-items:center}
-        .nav-links a{text-decoration:none;font-weight:600;font-size:.85rem;color:var(--gray-600);padding:8px 14px;border-radius:50px;transition:all .25s}
-        .nav-links a:hover,.nav-links a.active{color:var(--primary);background:rgba(185,28,28,.06)}
-        .nav-cta{background:linear-gradient(135deg,var(--primary),var(--primary-dark))!important;color:white!important;padding:10px 22px!important;box-shadow:0 4px 15px rgba(185,28,28,.3)}
-        .nav-cta:hover{transform:translateY(-2px)!important;box-shadow:0 6px 20px rgba(185,28,28,.4)!important}
-        .menu-icon{display:none;font-size:22px;cursor:pointer;color:var(--dark);padding:8px}
-
-        /* HERO */
-        .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:100px}
-        .hero-slider{position:absolute;inset:0;z-index:0}
-        .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease}
-        .hero-slide.active{opacity:1}
-        .hero-slide img{width:100%;height:100%;object-fit:cover}
-        .hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.9) 0%,rgba(30,41,59,.75) 50%,rgba(15,23,42,.6) 100%)}
-        .hero-particles{position:absolute;inset:0;z-index:1;overflow:hidden}
-        .particle{position:absolute;width:3px;height:3px;background:rgba(255,255,255,.12);border-radius:50%;animation:float-up linear infinite}
-        @keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
-        .hero-content{position:relative;z-index:2;color:white;max-width:780px}
-        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);backdrop-filter:blur(10px);padding:8px 20px;border-radius:50px;font-size:.82rem;font-weight:600;margin-bottom:24px;border:1px solid rgba(255,255,255,.12);animation:fadeInUp .8s ease-out}
-        .hero-badge i{color:var(--accent-light)}
-        .hero h2{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.08;margin-bottom:18px;animation:fadeInUp .8s ease-out .1s both}
-        .hero h2 span{background:linear-gradient(135deg,var(--accent-light),#fbbf24);-webkit-background-clip:text;background-clip:text;color:transparent}
-        .hero p{font-size:1.1rem;opacity:.8;max-width:580px;margin-bottom:32px;font-weight:400;animation:fadeInUp .8s ease-out .2s both}
-        .hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeInUp .8s ease-out .3s both}
-        .btn-primary{background:linear-gradient(135deg,var(--accent),#b45309);border:none;padding:15px 32px;font-weight:700;border-radius:50px;color:white;font-size:.95rem;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:10px;text-decoration:none;box-shadow:0 8px 25px rgba(217,119,6,.35)}
-        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(217,119,6,.45)}
-        .btn-secondary{background:rgba(255,255,255,.08);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);padding:15px 32px;font-weight:700;border-radius:50px;color:white;font-size:.95rem;cursor:pointer;transition:all .3s;display:inline-flex;align-items:center;gap:10px;text-decoration:none}
-        .btn-secondary:hover{background:rgba(255,255,255,.18);transform:translateY(-3px)}
-        .hero-stats{display:flex;gap:36px;margin-top:48px;flex-wrap:wrap;animation:fadeInUp .8s ease-out .4s both}
-        .hero-stat h3{font-size:1.8rem;font-weight:900;background:linear-gradient(135deg,#fbbf24,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-        .hero-stat p{font-size:.82rem;opacity:.65;font-weight:500}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-        .hero-slider-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
-        .hero-slider-dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s}
-        .hero-slider-dots span.active{background:var(--accent-light);width:30px;border-radius:10px}
-
-        /* TRUST BAR */
-        .trust-bar{background:var(--white);border-bottom:1px solid var(--gray-200);padding:18px 0;overflow:hidden}
-        .trust-inner{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
-        .trust-item{display:flex;align-items:center;gap:8px;color:var(--gray-500);font-weight:600;font-size:.82rem}
-        .trust-item i{font-size:1.2rem;color:var(--primary)}
-
-        /* SECTION COMMON */
-        .section{padding:90px 0}
-        .section-label{display:inline-flex;align-items:center;gap:8px;background:rgba(185,28,28,.06);color:var(--primary);padding:6px 18px;border-radius:50px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
-        .section-title{font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:900;margin-bottom:14px;color:var(--dark);line-height:1.15}
-        .section-subtitle{font-size:1rem;color:var(--gray-500);max-width:580px;margin:0 auto 48px;font-weight:400}
-        .text-center{text-align:center}
-        .text-center .section-subtitle{margin-left:auto;margin-right:auto}
-
-        /* SERVICES */
-        .services-section{background:var(--gray-100)}
-        .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px}
-        .service-card{background:var(--white);border-radius:var(--radius);padding:32px 24px;position:relative;overflow:hidden;border:1px solid var(--gray-200);transition:all .35s;cursor:default}
-        .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--primary),var(--accent));transform:scaleX(0);transform-origin:left;transition:transform .35s}
-        .service-card:hover::before{transform:scaleX(1)}
-        .service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl);border-color:transparent}
-        .service-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;background:linear-gradient(135deg,rgba(185,28,28,.08),rgba(217,119,6,.08));color:var(--primary)}
-        .service-card h3{font-size:1.12rem;font-weight:800;margin-bottom:8px;color:var(--dark)}
-        .service-card p{color:var(--gray-500);font-size:.88rem;line-height:1.6}
-        .service-card .learn-more{display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-weight:700;font-size:.85rem;margin-top:14px;text-decoration:none;transition:gap .2s}
-        .service-card:hover .learn-more{gap:10px}
-
-        /* DESTINATIONS */
-        .destinations-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:22px}
-        .dest-card{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;min-height:260px}
-        .dest-card:first-child{grid-row:span 2;min-height:100%}
-        .dest-card img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
-        .dest-card:hover img{transform:scale(1.08)}
-        .dest-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,23,42,.88) 0%,rgba(15,23,42,.1) 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:white;transition:background .3s}
-        .dest-card:hover .dest-overlay{background:linear-gradient(to top,rgba(15,23,42,.92) 0%,rgba(15,23,42,.2) 60%)}
-        .dest-tag{display:inline-block;background:var(--accent);color:white;padding:3px 12px;border-radius:50px;font-size:.7rem;font-weight:700;margin-bottom:8px;width:fit-content}
-        .dest-overlay h3{font-size:1.3rem;font-weight:800;margin-bottom:3px}
-        .dest-overlay p{font-size:.82rem;opacity:.8}
-        .dest-overlay .dest-price{font-size:.78rem;color:var(--accent-light);font-weight:700;margin-top:6px;display:none}
-        .dest-card:hover .dest-price{display:block}
-
-        /* VISA PROCESS */
-        .visa-section{background:var(--dark);color:white;position:relative;overflow:hidden}
-        .visa-section::before{content:'';position:absolute;top:-200px;right:-200px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(185,28,28,.12),transparent 70%)}
-        .visa-section::after{content:'';position:absolute;bottom:-150px;left:-150px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(217,119,6,.08),transparent 70%)}
-        .visa-section .section-label{background:rgba(255,255,255,.08);color:var(--accent-light)}
-        .visa-section .section-title{color:white}
-        .visa-section .section-subtitle{color:var(--gray-400)}
-        .steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;position:relative;z-index:1}
-        .step-card{text-align:center;padding:32px 20px;border-radius:var(--radius);background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);transition:all .3s}
-        .step-card:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);transform:translateY(-5px)}
-        .step-number{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.2rem;font-weight:900;margin:0 auto 18px;box-shadow:0 8px 25px rgba(185,28,28,.3)}
-        .step-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px}
-        .step-card p{color:var(--gray-400);font-size:.85rem;line-height:1.6}
-
-        /* PACKAGES */
-        .packages-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px}
-        .pkg-card{background:var(--white);border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--gray-200);transition:all .35s;position:relative}
-        .pkg-card.featured{border-color:var(--primary);box-shadow:0 0 0 1px var(--primary),var(--shadow-lg)}
-        .pkg-card.featured .pkg-badge{position:absolute;top:18px;right:18px;background:var(--primary);color:white;padding:4px 14px;border-radius:50px;font-size:.7rem;font-weight:700;z-index:2}
-        .pkg-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-xl)}
-        .pkg-header{padding:32px 28px 20px}
-        .pkg-header .pkg-icon{font-size:2.2rem;margin-bottom:14px;color:var(--primary)}
-        .pkg-header h3{font-size:1.3rem;font-weight:800;margin-bottom:4px}
-        .pkg-header p{color:var(--gray-500);font-size:.88rem}
-        .pkg-price{padding:0 28px 20px}
-        .pkg-price span{font-size:.82rem;color:var(--gray-400);font-weight:500}
-        .pkg-price strong{font-size:1.7rem;font-weight:900;color:var(--dark)}
-        .pkg-features{padding:0 28px 24px;list-style:none}
-        .pkg-features li{padding:7px 0;font-size:.88rem;color:var(--gray-600);display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--gray-100)}
-        .pkg-features li:last-child{border:none}
-        .pkg-features li i{color:var(--green);font-size:.82rem}
-        .pkg-footer{padding:0 28px 28px}
-        .pkg-btn{display:block;width:100%;padding:13px;border-radius:50px;font-weight:700;font-size:.92rem;cursor:pointer;transition:all .3s;text-align:center;text-decoration:none;border:2px solid var(--gray-200);color:var(--dark);background:transparent}
-        .pkg-btn:hover{border-color:var(--primary);color:var(--primary)}
-        .pkg-card.featured .pkg-btn{background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;border-color:transparent;box-shadow:0 6px 20px rgba(185,28,28,.3)}
-        .pkg-card.featured .pkg-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(185,28,28,.4)}
-
-        /* WHY US */
-        .why-section{background:var(--gray-100)}
-        .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-        .why-image{position:relative;border-radius:var(--radius-lg);overflow:hidden;height:520px}
-        .why-image img{width:100%;height:100%;object-fit:cover}
-        .why-image-badge{position:absolute;bottom:24px;left:24px;background:rgba(15,23,42,.85);backdrop-filter:blur(10px);color:white;padding:18px 24px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.1)}
-        .why-image-badge h4{font-size:1.6rem;font-weight:900}
-        .why-image-badge p{font-size:.82rem;opacity:.75}
-        .why-features{display:flex;flex-direction:column;gap:20px}
-        .why-feature{display:flex;gap:14px;padding:18px;background:var(--white);border-radius:var(--radius);border:1px solid var(--gray-200);transition:all .3s}
-        .why-feature:hover{box-shadow:var(--shadow-md);transform:translateX(6px)}
-        .why-feature-icon{width:46px;height:46px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;background:linear-gradient(135deg,rgba(185,28,28,.08),rgba(217,119,6,.08));color:var(--primary)}
-        .why-feature h4{font-size:.95rem;font-weight:700;margin-bottom:3px}
-        .why-feature p{color:var(--gray-500);font-size:.85rem}
-
-        /* COUNTER */
-        .counter-section{background:linear-gradient(135deg,var(--primary-dark),var(--dark));padding:65px 0;color:white}
-        .counter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
-        .counter-item h3{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;background:linear-gradient(135deg,#fbbf24,var(--accent-light));-webkit-background-clip:text;background-clip:text;color:transparent}
-        .counter-item p{font-size:.85rem;opacity:.65;margin-top:3px;font-weight:500}
-
-        /* GALLERY */
-        .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,180px);gap:16px}
-        .gallery-grid .g-item{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
-        .gallery-grid .g-item:nth-child(1){grid-column:span 2;grid-row:span 2}
-        .gallery-grid .g-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-        .gallery-grid .g-item:hover img{transform:scale(1.08)}
-        .g-item-overlay{position:absolute;inset:0;background:rgba(15,23,42,.5);opacity:0;transition:.3s;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:.95rem}
-        .gallery-grid .g-item:hover .g-item-overlay{opacity:1}
-
-        /* TESTIMONIALS */
-        .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:26px}
-        .testi-card{background:var(--white);border-radius:var(--radius);padding:30px;border:1px solid var(--gray-200);transition:all .3s;position:relative}
-        .testi-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
-        .testi-stars{color:var(--accent-light);font-size:.85rem;margin-bottom:14px}
-        .testi-card p{color:var(--gray-600);font-size:.92rem;line-height:1.7;margin-bottom:18px;font-style:italic}
-        .testi-author{display:flex;align-items:center;gap:14px}
-        .testi-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;border:2px solid var(--gray-200)}
-        .testi-avatar img{width:100%;height:100%;object-fit:cover}
-        .testi-author h4{font-size:.92rem;font-weight:700}
-        .testi-author span{font-size:.78rem;color:var(--gray-400)}
-        .testi-quote{position:absolute;top:18px;right:22px;font-size:2.8rem;color:var(--gray-200);line-height:1;font-family:Georgia,serif}
-
-        /* PARTNERS */
-        .partners-section{background:var(--gray-100);padding:50px 0}
-        .partners-label{text-align:center;font-size:.8rem;font-weight:700;color:var(--gray-400);text-transform:uppercase;letter-spacing:2px;margin-bottom:30px}
-        .partners-grid{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap;opacity:.5}
-        .partners-grid span{font-size:1.3rem;font-weight:800;color:var(--gray-500);letter-spacing:1px}
-
-        /* FAQ */
-        .faq-section{background:var(--gray-100)}
-        .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
-        .faq-item{background:var(--white);border-radius:16px;border:1px solid var(--gray-200);overflow:hidden;transition:.3s}
-        .faq-item.active{box-shadow:var(--shadow-md);border-color:transparent}
-        .faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-weight:700;font-size:.95rem;color:var(--dark);transition:.2s;gap:12px}
-        .faq-q:hover{color:var(--primary)}
-        .faq-q i{transition:transform .3s;font-size:.85rem;color:var(--gray-400);flex-shrink:0}
-        .faq-item.active .faq-q i{transform:rotate(180deg);color:var(--primary)}
-        .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
-        .faq-item.active .faq-a{max-height:300px;padding:0 24px 20px}
-        .faq-a p{color:var(--gray-500);font-size:.9rem;line-height:1.7}
-
-        /* CTA BANNER */
-        .cta-banner{background:linear-gradient(135deg,var(--primary) 0%,var(--dark) 100%);padding:70px 0;color:white;text-align:center;position:relative;overflow:hidden}
-        .cta-banner::before{content:'';position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;background:rgba(217,119,6,.15)}
-        .cta-banner::after{content:'';position:absolute;bottom:-80px;left:-80px;width:250px;height:250px;border-radius:50%;background:rgba(185,28,28,.15)}
-        .cta-banner h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;margin-bottom:14px;position:relative;z-index:1}
-        .cta-banner p{font-size:1.05rem;opacity:.85;margin-bottom:30px;position:relative;z-index:1}
-        .cta-banner .btn-primary{position:relative;z-index:1}
-
-        /* CONTACT */
-        .contact-section{background:var(--gray-100)}
-        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
-        .contact-cards{display:flex;flex-direction:column;gap:18px}
-        .contact-card{background:var(--white);border-radius:var(--radius);padding:22px;display:flex;align-items:flex-start;gap:14px;border:1px solid var(--gray-200);transition:all .3s}
-        .contact-card:hover{box-shadow:var(--shadow-md);transform:translateY(-3px)}
-        .contact-card-icon{width:48px;height:48px;border-radius:14px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:white;background:linear-gradient(135deg,var(--primary),var(--accent))}
-        .contact-card h4{font-size:.92rem;font-weight:700;margin-bottom:3px}
-        .contact-card p{color:var(--gray-500);font-size:.85rem;line-height:1.5}
-        .contact-card a{color:var(--primary);text-decoration:none;font-weight:600}
-        .contact-form-wrap{background:var(--white);border-radius:var(--radius-lg);padding:36px;border:1px solid var(--gray-200);box-shadow:var(--shadow-md)}
-        .contact-form-wrap h3{font-size:1.3rem;font-weight:800;margin-bottom:6px}
-        .contact-form-wrap>p{color:var(--gray-500);font-size:.88rem;margin-bottom:24px}
-        .form-group{margin-bottom:16px}
-        .form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--gray-700);margin-bottom:5px}
-        .form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 15px;border:1px solid var(--gray-200);border-radius:12px;font-family:inherit;font-size:.9rem;color:var(--dark);transition:border-color .2s;background:var(--gray-100);outline:none}
-        .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--primary);background:var(--white)}
-        .form-group textarea{resize:vertical;min-height:90px}
-        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-        .form-submit{width:100%;padding:13px;border:none;border-radius:50px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .3s;box-shadow:0 6px 20px rgba(185,28,28,.3)}
-        .form-submit:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(185,28,28,.4)}
-        .form-toast{display:none;margin-top:12px;padding:11px 16px;border-radius:12px;font-size:.85rem;font-weight:600;background:rgba(22,163,74,.1);color:var(--green);border:1px solid rgba(22,163,74,.2)}
-        .form-toast.show{display:flex;align-items:center;gap:8px}
-
-        /* MAP */
-        .map-section{padding:0 0 70px}
-        .map-container{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:4px solid var(--white)}
-        .map-container iframe{width:100%;height:380px;border:0}
-
-        /* FOOTER */
-        footer{background:var(--dark);color:var(--gray-400);padding:65px 0 0}
-        .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1.2fr;gap:36px;padding-bottom:45px;border-bottom:1px solid rgba(255,255,255,.06)}
-        .footer-about img{height:46px;margin-bottom:14px}
-        .footer-about p{font-size:.88rem;line-height:1.7;margin-bottom:18px}
-        .footer-social{display:flex;gap:10px}
-        .footer-social a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:var(--gray-400);font-size:1rem;transition:all .25s;text-decoration:none}
-        .footer-social a:hover{background:var(--primary);color:white;transform:translateY(-3px)}
-        .footer-col h4{color:white;font-size:.95rem;font-weight:700;margin-bottom:18px}
-        .footer-col ul{list-style:none}
-        .footer-col ul li{margin-bottom:9px}
-        .footer-col ul a{color:var(--gray-400);text-decoration:none;font-size:.88rem;transition:all .2s;display:flex;align-items:center;gap:6px}
-        .footer-col ul a:hover{color:white;padding-left:4px}
-        .newsletter-form{display:flex;gap:8px}
-        .newsletter-form input{flex:1;padding:11px 14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.06);color:white;font-family:inherit;font-size:.88rem;outline:none}
-        .newsletter-form input::placeholder{color:var(--gray-500)}
-        .newsletter-form input:focus{border-color:var(--primary)}
-        .newsletter-form button{padding:11px 18px;border:none;border-radius:12px;background:var(--primary);color:white;cursor:pointer;transition:.2s}
-        .newsletter-form button:hover{background:var(--primary-light)}
-        .footer-bottom{padding:22px 0;text-align:center;font-size:.8rem;color:var(--gray-500)}
-
-        /* FLOATING */
-        .floating-wa{position:fixed;bottom:24px;right:24px;background:#25D366;color:white;border-radius:50px;padding:13px 20px;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 8px 25px rgba(37,211,102,.4);text-decoration:none;z-index:99;font-size:.92rem;transition:all .3s;animation:bounce-gentle 2s ease-in-out infinite}
-        @keyframes bounce-gentle{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-        .floating-wa:hover{background:#128C7E;animation:none;transform:scale(1.05)}
-        .floating-wa i{font-size:1.4rem}
-        .floating-call{position:fixed;bottom:24px;right:180px;background:var(--primary);color:white;border-radius:50px;padding:13px 20px;font-weight:700;display:flex;align-items:center;gap:10px;box-shadow:0 8px 25px rgba(185,28,28,.4);text-decoration:none;z-index:99;font-size:.92rem;transition:all .3s;animation:bounce-gentle 2s ease-in-out infinite .5s}
-        .floating-call:hover{background:var(--primary-dark);animation:none;transform:scale(1.05)}
-        .scroll-top{position:fixed;bottom:24px;left:24px;width:46px;height:46px;border-radius:50%;background:var(--dark);color:white;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;z-index:99;opacity:0;visibility:hidden;transition:all .3s;box-shadow:var(--shadow-md)}
-        .scroll-top.show{opacity:1;visibility:visible}
-        .scroll-top:hover{background:var(--primary);transform:translateY(-3px)}
-
-        /* ANIMATIONS */
-        .reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
-        .reveal.active{opacity:1;transform:translateY(0)}
-        .reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
-        .reveal-left.active{opacity:1;transform:translateX(0)}
-        .reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
-        .reveal-right.active{opacity:1;transform:translateX(0)}
-
-        @media(max-width:1024px){
-            .destinations-grid{grid-template-columns:1fr 1fr}
-            .dest-card:first-child{grid-row:span 1}
-            .footer-grid{grid-template-columns:1fr 1fr}
-            .counter-grid{grid-template-columns:repeat(2,1fr)}
-            .gallery-grid{grid-template-columns:repeat(2,1fr);grid-template-rows:auto}
-            .gallery-grid .g-item:nth-child(1){grid-column:span 2}
+        .hero-slide.active { opacity: 1; }
+        .navbar-scrolled {
+            background: rgba(255,255,255,0.97) !important;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 2px 30px rgba(0,0,0,0.08);
         }
-        @media(max-width:768px){
-            .top-bar{display:none}
-            .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:white;flex-direction:column;padding:16px 24px;box-shadow:var(--shadow-lg);border-top:1px solid var(--gray-200);gap:2px}
-            .nav-links.show{display:flex}
-            .nav-links a{padding:12px 14px;width:100%;text-align:center}
-            .menu-icon{display:block}
-            .hero h2{font-size:1.8rem}
-            .hero-stats{gap:20px}
-            .hero-stat h3{font-size:1.4rem}
-            .why-grid{grid-template-columns:1fr}
-            .why-image{height:300px}
-            .contact-grid{grid-template-columns:1fr}
-            .form-row{grid-template-columns:1fr}
-            .destinations-grid{grid-template-columns:1fr}
-            .footer-grid{grid-template-columns:1fr;gap:28px}
-            .packages-grid{grid-template-columns:1fr}
-            .testimonials-grid{grid-template-columns:1fr}
-            .trust-inner{gap:20px}
-            .floating-wa span,.floating-call span{display:none}
-            .floating-wa,.floating-call{padding:13px;border-radius:50%}
-            .floating-call{right:90px}
-            .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-            .gallery-grid .g-item:nth-child(1){grid-column:span 2}
+        .navbar-scrolled .nav-link { color: #374151 !important; }
+        .navbar-scrolled .nav-logo-text { color: #0F6E56 !important; }
+        .navbar-scrolled .nav-sub { color: #6b7280 !important; }
+        .navbar-scrolled .nav-call { color: #374151 !important; }
+        .service-card {
+            transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.4s cubic-bezier(.25,.8,.25,1);
         }
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 28px 56px rgba(0,0,0,0.12);
+        }
+        @keyframes pulse-wa {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+            70% { box-shadow: 0 0 0 18px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-float { animation: pulse-wa 2s infinite; }
+        .fade-up {
+            opacity: 0; transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+        .slider-dot {
+            width: 12px; height: 12px; border-radius: 50%;
+            background: rgba(255,255,255,0.35); cursor: pointer; transition: all 0.3s;
+        }
+        .slider-dot.active { background: #EF9F27; transform: scale(1.35); }
+        .mobile-menu {
+            transform: translateX(100%); transition: transform 0.35s ease;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0F6E56; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #0a5a45; }
+        .stat-card { backdrop-filter: blur(12px); }
+        .visa-card-img {
+            transition: transform 0.6s ease;
+        }
+        .visa-card:hover .visa-card-img {
+            transform: scale(1.08);
+        }
+        .country-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        .country-badge { transition: all 0.3s ease; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .float-anim { animation: float 3s ease-in-out infinite; }
     </style>
 </head>
-<body>
+<body class="bg-white text-gray-800 font-main overflow-x-hidden">
 
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-    <img src="https://z-cdn-media.chatglm.cn/files/23a1c88d-a563-412a-93cd-16926ac38f47.png?auth_key=1876772205-d52c9135e39542c4848eda96af87da71-0-f23f7dab6e181a6551df2cdfdb0d9588" alt="Loading">
-    <div class="preloader-bar"></div>
-</div>
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/8801613076654" target="_blank"
+       class="whatsapp-float fixed bottom-6 right-6 z-[999] w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
 
-<!-- Top Bar -->
-<div class="top-bar">
-    <div class="container top-bar-inner">
-        <div class="top-bar-left">
-            <a href="tel:+8809643776654"><i class="fas fa-phone-alt"></i> +880 9643-776654</a>
-            <a href="mailto:info@successinc.pro.bd"><i class="fas fa-envelope"></i> info@successinc.pro.bd</a>
-            <span class="top-status"><span class="dot"></span> এখন ওপেন</span>
-        </div>
-        <div class="top-bar-right">
-            <a href="https://www.facebook.com/success.inc24" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/success.inc22" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="https://wa.me/8801613076654" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        </div>
-    </div>
-</div>
-
-<!-- Navbar -->
-<nav class="navbar" id="navbar">
-    <div class="container nav-inner">
-        <div class="logo-area">
-            <img class="logo-img" src="https://z-cdn-media.chatglm.cn/files/23a1c88d-a563-412a-93cd-16926ac38f47.png?auth_key=1876772205-d52c9135e39542c4848eda96af87da71-0-f23f7dab6e181a6551df2cdfdb0d9588" alt="Success Inc.">
-            <div class="logo-text">
-                <h1>Success Inc.</h1>
-                <div class="tagline">স্বপ্ন পূরণ হোক ভ্রমণের সাথে</div>
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <a href="#" class="flex items-center gap-2.5 shrink-0">
+                    <img src="https://images.unsplash.com/vector-1777720578127-ec36d4954ece?q=80&w=1181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Success Inc." class="h-10 w-10 rounded-full object-cover">
+                    <div class="leading-tight">
+                        <span class="nav-logo-text text-white font-bold text-lg block transition-colors">Success Inc.</span>
+                        <span class="nav-sub text-white/60 text-[10px] tracking-widest uppercase transition-colors">Travels & Tourism</span>
+                    </div>
+                </a>
+                <div class="hidden lg:flex items-center gap-1">
+                    <a href="#home" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Home</a>
+                    <a href="#services" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Services</a>
+                    <a href="#visa" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Visa</a>
+                    <a href="#packages" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Packages</a>
+                    <a href="#workpermit" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Work Permit</a>
+                    <a href="#reviews" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Reviews</a>
+                    <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium text-white/90 hover:text-accent transition-colors">Contact</a>
+                </div>
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="tel:+8809735776654" class="nav-call flex items-center gap-1.5 text-sm text-white/80 hover:text-accent transition-colors">
+                        <span class="iconify w-4 h-4" data-icon="lucide:phone"></span>
+                        Call Us
+                    </a>
+                    <a href="https://wa.me/8801613076654" target="_blank"
+                       class="bg-accent hover:bg-accent-dark text-white px-5 py-2.5 rounded-full text-sm font-semibold transition-all hover:shadow-lg hover:shadow-accent/30">
+                        Contact Now
+                    </a>
+                </div>
+                <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <span class="iconify w-6 h-6 text-white" data-icon="lucide:menu"></span>
+                </button>
             </div>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#home" class="active">হোম</a></li>
-            <li><a href="#services">সেবাসমূহ</a></li>
-            <li><a href="#destinations">গন্তব্য</a></li>
-            <li><a href="#packages">প্যাকেজ</a></li>
-            <li><a href="#gallery">গ্যালারি</a></li>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contact">যোগাযোগ</a></li>
-            <li><a href="https://wa.me/8801613076654?text=হ্যালো,%20Success%20Inc.%20থেকে%20ভিসা/টিকেট%20নিয়ে%20জানতে%20চাই" class="nav-cta" target="_blank">কোটেশন নিন</a></li>
-        </ul>
-    </div>
-</nav>
+    </nav>
 
-<!-- Hero -->
-<section id="home" class="hero">
-    <div class="hero-slider" id="heroSlider">
-        <div class="hero-slide active">
-            <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=2070&q=80" alt="Travel">
-        </div>
-        <div class="hero-slide">
-            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=2070&q=80" alt="Airport">
-        </div>
-        <div class="hero-slide">
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=2070&q=80" alt="Beautiful Place">
-        </div>
-        <div class="hero-slide">
-            <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=2070&q=80" alt="Road Trip">
-        </div>
-    </div>
-    <div class="hero-particles" id="particles"></div>
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge"><i class="fas fa-shield-alt"></i> বিশ্বস্ত ভিসা ও ফ্লাইট পার্টনার</div>
-            <h2>বিশ্ব ভ্রমণের <span>স্বপ্ন</span> বাস্তবায়ন করুন</h2>
-            <p>কানাডা, ইউকে, অস্ট্রেলিয়া ও শেনজেন ভিসা প্রসেসিং থেকে শুরু করে সাশ্রয়ী ফ্লাইট টিকেট — সবকিছু এক ছাদের নিচে।</p>
-            <div class="hero-btns">
-                <a href="#packages" class="btn-primary"><i class="fas fa-paper-plane"></i> প্যাকেজ দেখুন</a>
-                <a href="https://wa.me/8801613076654" class="btn-secondary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp করুন</a>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[60] shadow-2xl">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <span class="text-primary font-bold text-lg">Menu</span>
+                <button id="closeMenu" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <span class="iconify w-6 h-6 text-gray-600" data-icon="lucide:x"></span>
+                </button>
             </div>
-            <div class="hero-stats">
-                <div class="hero-stat"><h3 id="counter1">০</h3><p>সফল ভিসা</p></div>
-                <div class="hero-stat"><h3 id="counter2">০</h3><p>দেশ কভারেজ</p></div>
-                <div class="hero-stat"><h3 id="counter3">০</h3><p>খুশি গ্রাহক</p></div>
-                <div class="hero-stat"><h3 id="counter4">০%</h3><p>সফলতার হার</p></div>
+            <div class="flex flex-col gap-1">
+                <a href="#home" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Home</a>
+                <a href="#services" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Services</a>
+                <a href="#visa" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Visa</a>
+                <a href="#packages" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Packages</a>
+                <a href="#workpermit" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Work Permit</a>
+                <a href="#reviews" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Reviews</a>
+                <a href="#contact" class="mobile-link px-4 py-3 rounded-lg text-gray-700 hover:bg-primary-light hover:text-primary transition-all font-medium">Contact</a>
+            </div>
+            <div class="mt-8 flex flex-col gap-3">
+                <a href="tel:+8809735776654" class="flex items-center justify-center gap-2 px-5 py-3 border-2 border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition-all">
+                    <span class="iconify w-4 h-4" data-icon="lucide:phone"></span>
+                    Call Now
+                </a>
+                <a href="https://wa.me/8801613076654" target="_blank" class="flex items-center justify-center gap-2 px-5 py-3 bg-accent text-white rounded-full font-semibold hover:bg-accent-dark transition-all">
+                    Contact Now
+                </a>
             </div>
         </div>
     </div>
-    <div class="hero-slider-dots" id="heroDots">
-        <span class="active" onclick="goToSlide(0)"></span>
-        <span onclick="goToSlide(1)"></span>
-        <span onclick="goToSlide(2)"></span>
-        <span onclick="goToSlide(3)"></span>
-    </div>
-</section>
+    <div id="menuOverlay" class="fixed inset-0 bg-black/40 z-[55] hidden opacity-0 transition-opacity duration-300"></div>
 
-<!-- Trust Bar -->
-<div class="trust-bar">
-    <div class="container">
-        <div class="trust-inner">
-            <div class="trust-item"><i class="fas fa-certificate"></i> সরকারি অনুমোদিত</div>
-            <div class="trust-item"><i class="fas fa-handshake"></i> IATA সদস্য</div>
-            <div class="trust-item"><i class="fas fa-clock"></i> ২৪/৭ সাপোর্ট</div>
-            <div class="trust-item"><i class="fas fa-money-bill-wave"></i> সেরা দাম গ্যারান্টি</div>
-            <div class="trust-item"><i class="fas fa-shield-alt"></i> ১০০% রিফান্ড পলিসি</div>
-        </div>
-    </div>
-</div>
-
-<!-- Services -->
-<section id="services" class="section services-section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-concierge-bell"></i> আমাদের সেবাসমূহ</div>
-            <h2 class="section-title">যা যা আমরা অফার করি</h2>
-            <p class="section-subtitle">ভিসা প্রসেসিং থেকে শুরু করে ফ্লাইট বুকিং — আপনার ভ্রমণের প্রতিটি ধাপে আমরা আছি</p>
-        </div>
-        <div class="services-grid">
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-plane-departure"></i></div><h3>ফ্লাইট টিকেট</h3><p>দেশীয় ও আন্তর্জাতিক সকল এয়ারলাইন্সের টিকেট সরাসরি কনফার্মেশন সহ।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-passport"></i></div><h3>কানাডা ভিসা</h3><p>ট্যুরিস্ট ভিসা, স্টুডেন্ট ভিসা ও ওয়ার্ক পারমিট — সম্পূর্ণ ডকুমেন্টেশন সাপোর্ট।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-globe-europe"></i></div><h3>UK ভিসা</h3><p>ভিজিট ভিসা, স্টুডেন্ট ও ওয়ার্ক পারমিট প্রসেসিং এক্সপার্ট গাইডলাইন সহ।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-globe-asia"></i></div><h3>অস্ট্রেলিয়া ভিসা</h3><p>ট্যুরিস্ট, স্টুডেন্ট ও স্কিলড ওয়ার্কার ভিসা — প্রফেশনাল প্রসেসিং।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-map-marked-alt"></i></div><h3>শেনজেন ভিসা</h3><p>ইউরোপের ২৬+ দেশে ভ্রমণের জন্য শেনজেন ভিসা প্রসেসিং ও গাইডলাইন।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-hotel"></i></div><h3>হোটেল বুকিং</h3><p>বিশ্বের যেকোনো গন্তব্যে সেরা মূল্যে হোটেল ও রিসোর্ট বুকিং সার্ভিস।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-kaaba"></i></div><h3>হজ ও ওমরাহ</h3><p>লাক্সারি থেকে ইকোনোমি — সকল প্যাকেজে হজ ও ওমরাহ সার্ভিস।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-            <div class="service-card reveal"><div class="service-icon"><i class="fas fa-file-contract"></i></div><h3>ট্রাভেল ইন্স্যুরেন্স</h3><p>আন্তর্জাতিক ট্রাভেল ইন্স্যুরেন্স — আপনার নিরাপত্তা নিশ্চিত করুন।</p><a href="#contact" class="learn-more">বিস্তারিত <i class="fas fa-arrow-right"></i></a></div>
-        </div>
-    </div>
-</section>
-
-<!-- Destinations -->
-<section id="destinations" class="section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-compass"></i> জনপ্রিয় গন্তব্য</div>
-            <h2 class="section-title">বিশ্বের সেরা ভ্রমণ গন্তব্য</h2>
-            <p class="section-subtitle">আমাদের এক্সপার্ট টিম আপনাকে পৌঁছে দেবে আপনার স্বপ্নের গন্তব্যে</p>
-        </div>
-        <div class="destinations-grid reveal">
-            <div class="dest-card"><img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Canada"><div class="dest-overlay"><div class="dest-tag">অন্যতম জনপ্রিয়</div><h3>কানাডা</h3><p>টরন্টো, ভ্যাঙ্কুভার, মন্ট্রিয়াল</p><div class="dest-price">ভিসা: ৳২৫,০০০ থেকে</div></div></div>
-            <div class="dest-card"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="UK"><div class="dest-overlay"><div class="dest-tag">ভিজিট ভিসা</div><h3>যুক্তরাজ্য</h3><p>লন্ডন, ম্যানচেস্টার, বার্মিংহাম</p><div class="dest-price">ভিসা: ৳২৮,০০০ থেকে</div></div></div>
-            <div class="dest-card"><img src="https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Australia"><div class="dest-overlay"><div class="dest-tag">ওয়ার্ক পারমিট</div><h3>অস্ট্রেলিয়া</h3><p>সিডনি, মেলবোর্ন, ব্রিসবেন</p><div class="dest-price">ভিসা: ৳৩০,০০০ থেকে</div></div></div>
-            <div class="dest-card"><img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Europe"><div class="dest-overlay"><div class="dest-tag">শেনজেন</div><h3>ইউরোপ</h3><p>জার্মানি, ফ্রান্স, ইতালি, স্পেন</p><div class="dest-price">ভিসা: ৳২০,০০০ থেকে</div></div></div>
-            <div class="dest-card"><img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Malaysia"><div class="dest-overlay"><div class="dest-tag">ট্যুরিস্ট</div><h3>মালয়েশিয়া</h3><p>কুয়ালালামপুর, লাংকাওয়ি, পেনাং</p><div class="dest-price">ভিসা: ৳৮,০০০ থেকে</div></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- Visa Process -->
-<section class="section visa-section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-route"></i> ভিসা প্রসেস</div>
-            <h2 class="section-title">মাত্র ৪ ধাপে ভিসা পান</h2>
-            <p class="section-subtitle">আমাদের সহজ ও স্বচ্ছ প্রসেসে ঝামেলামুক্ত ভিসা আবেদন</p>
-        </div>
-        <div class="steps-grid">
-            <div class="step-card reveal"><div class="step-number">১</div><h3>কনসালটেশন</h3><p>আমাদের সাথে যোগাযোগ করুন বা অফিসে আসুন। প্রয়োজন অনুযায়ী সেরা প্যাকেজ বেছে নিন।</p></div>
-            <div class="step-card reveal"><div class="step-number">২</div><h3>ডকুমেন্ট সংগ্রহ</h3><p>আমাদের চেকলিস্ট অনুযায়ী প্রয়োজনীয় কাগজপত্র সংগ্রহ করুন। আমরা সাহায্য করবো।</p></div>
-            <div class="step-card reveal"><div class="step-number">৩</div><h3>ফাইল সাবমিশন</h3><p>এক্সপার্ট টিম আপনার ফাইল যাচাই করে এম্বাসি/ভিসা সেন্টারে সাবমিট করবে।</p></div>
-            <div class="step-card reveal"><div class="step-number">৪</div><h3>ভিসা পাওয়া</h3><p>ভিসা অ্যাপ্রুভালের পর আমরা আপনাকে জানাবো এবং ফ্লাইট বুকিংয়ে সাহায্য করবো।</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- Packages -->
-<section id="packages" class="section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-gift"></i> প্যাকেজ প্রাইসিং</div>
-            <h2 class="section-title">আমাদের ভিসা প্যাকেজ</h2>
-            <p class="section-subtitle">আপনার প্রয়োজন ও বাজেট অনুযায়ী সেরা প্যাকেজ বেছে নিন</p>
-        </div>
-        <div class="packages-grid">
-            <div class="pkg-card reveal"><div class="pkg-header"><div class="pkg-icon"><i class="fas fa-plane"></i></div><h3>ফ্লাইট টিকেট</h3><p>যেকোনো আন্তর্জাতিক রুট</p></div><div class="pkg-price"><span>শুরু </span><strong>৳৫,০০০</strong><span> থেকে</span></div><ul class="pkg-features"><li><i class="fas fa-check-circle"></i> সকল এয়ারলাইন্স কভারেজ</li><li><i class="fas fa-check-circle"></i> তাৎক্ষণিক কনফার্মেশন</li><li><i class="fas fa-check-circle"></i> সেরা মূল্য গ্যারান্টি</li><li><i class="fas fa-check-circle"></i> ফ্রি সিট সিলেকশন</li><li><i class="fas fa-check-circle"></i> ২৪/৭ কাস্টমার সাপোর্ট</li></ul><div class="pkg-footer"><a href="https://wa.me/8801613076654?text=ফ্লাইট%20টিকেট%20প্যাকেজ%20নিয়ে%20জানতে%20চাই" class="pkg-btn" target="_blank">এখনই বুক করুন</a></div></div>
-            <div class="pkg-card featured reveal"><div class="pkg-badge">সবচেয়ে জনপ্রিয়</div><div class="pkg-header"><div class="pkg-icon"><i class="fas fa-passport"></i></div><h3>কানাডা ভিসা</h3><p>ট্যুরিস্ট / ওয়ার্ক পারমিট</p></div><div class="pkg-price"><span>শুরু </span><strong>৳২৫,০০০</strong><span> থেকে</span></div><ul class="pkg-features"><li><i class="fas fa-check-circle"></i> সম্পূর্ণ ডকুমেন্ট চেক</li><li><i class="fas fa-check-circle"></i> ফর্ম ফিলাপ সাপোর্ট</li><li><i class="fas fa-check-circle"></i> বায়োমেট্রিক্স স্লট বুকিং</li><li><i class="fas fa-check-circle"></i> কভার লেটার প্রস্তুতি</li><li><i class="fas fa-check-circle"></i> ইন্টারভিউ প্রিপারেশন</li><li><i class="fas fa-check-circle"></i> ফ্লাইট বুকিং সাপোর্ট</li></ul><div class="pkg-footer"><a href="https://wa.me/8801613076654?text=কানাডা%20ভিসা%20প্যাকেজ%20নিয়ে%20জানতে%20চাই" class="pkg-btn" target="_blank">এখনই আবেদন করুন</a></div></div>
-            <div class="pkg-card reveal"><div class="pkg-header"><div class="pkg-icon"><i class="fas fa-globe-europe"></i></div><h3>শেনজেন ভিসা</h3><p>২৬+ ইউরোপীয় দেশ</p></div><div class="pkg-price"><span>শুরু </span><strong>৳২০,০০০</strong><span> থেকে</span></div><ul class="pkg-features"><li><i class="fas fa-check-circle"></i> ডকুমেন্ট ভেরিফিকেশন</li><li><i class="fas fa-check-circle"></i> ইন্স্যুরেন্স ও হোটেল বুকিং</li><li><i class="fas fa-check-circle"></i> এম্বাসি অ্যাপয়েন্টমেন্ট</li><li><i class="fas fa-check-circle"></i> ফ্লাইট রিজার্ভেশন</li><li><i class="fas fa-check-circle"></i> ট্রাভেল আইটিনারি</li></ul><div class="pkg-footer"><a href="https://wa.me/8801613076654?text=শেনজেন%20ভিসা%20প্যাকেজ%20নিয়ে%20জানতে%20চাই" class="pkg-btn" target="_blank">এখনই আবেদন করুন</a></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- Why Choose Us -->
-<section class="section why-section">
-    <div class="container">
-        <div class="why-grid">
-            <div class="why-image reveal-left"><img src="https://images.unsplash.com/photo-1522199710521-72d69614c702?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Why Choose Us"><div class="why-image-badge"><h4>৫+ বছর</h4><p>ভিসা প্রসেসিং অভিজ্ঞতা</p></div></div>
-            <div class="reveal-right">
-                <div class="section-label"><i class="fas fa-trophy"></i> কেন আমরাই সেরা</div>
-                <h2 class="section-title">আমাদের বেছে নেওয়ার <br>পেছনের কারণ</h2>
-                <div class="why-features">
-                    <div class="why-feature"><div class="why-feature-icon"><i class="fas fa-percentage"></i></div><div><h4>৯৮% ভিসা সফলতার হার</h4><p>এক্সপার্ট টিমের কারণে ভিসা অ্যাপ্রুভালের হার শিল্পের সর্বোচ্চ।</p></div></div>
-                    <div class="why-feature"><div class="why-feature-icon"><i class="fas fa-users"></i></div><div><h4>অভিজ্ঞ ভিসা কনসালট্যান্ট</h4><p>প্রতিটি কেস হ্যান্ডেল করেন বছরের পর বছর অভিজ্ঞ প্রফেশনালরা।</p></div></div>
-                    <div class="why-feature"><div class="why-feature-icon"><i class="fas fa-headset"></i></div><div><h4>এক-টু-ওয়ান সাপোর্ট</h4><p>আবেদন থেকে ভিসা পাওয়া পর্যন্ত ডেডিকেটেড কনসালট্যান্ট আপনার পাশে।</p></div></div>
-                    <div class="why-feature"><div class="why-feature-icon"><i class="fas fa-lock"></i></div><div><h4>নিরাপদ ও স্বচ্ছ প্রসেস</h4><p>কোনো লুকানো চার্জ নেই। প্রতিটি খরচের বিস্তারিত হিসাব আগেভাগে জানানো হয়।</p></div></div>
+    <!-- HERO -->
+    <section id="home" class="relative h-screen min-h-[650px] max-h-[1000px] overflow-hidden">
+        <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1920&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1524293581917-878a6d017c71?w=1920&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=1920&q=80')"></div>
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80')"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/35 to-black/70 z-[1]"></div>
+        <div class="relative z-[2] flex flex-col items-center justify-center h-full text-center px-4 pt-20">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-5 py-2 mb-6">
+                <span class="iconify w-4 h-4 text-accent" data-icon="lucide:sparkles"></span>
+                <span class="text-white/90 text-xs font-medium tracking-wide">Trusted Travel Partner in Sylhet</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] max-w-4xl mb-5">
+                We Take You to<br>Your <span class="text-accent">Dream Destination</span>
+            </h1>
+            <p class="text-white/70 text-base sm:text-lg md:text-xl mb-8 max-w-2xl leading-relaxed">Flight tickets, visit visas, hotel bookings & work permits — everything under one roof.</p>
+            <div class="flex flex-wrap gap-4 justify-center mb-14">
+                <a href="#services" class="bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:shadow-primary/30 flex items-center gap-2">
+                    <span class="iconify w-4 h-4" data-icon="lucide:grid-3x3"></span>
+                    Explore Services
+                </a>
+                <a href="https://wa.me/8801613076654" target="_blank" class="bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full font-semibold text-sm transition-all hover:shadow-xl hover:shadow-accent/30 flex items-center gap-2">
+                    <span class="iconify w-4 h-4" data-icon="lucide:message-circle"></span>
+                    Contact Now
+                </a>
+            </div>
+            <div class="flex gap-2.5 mb-8">
+                <span class="slider-dot active" data-slide="0"></span>
+                <span class="slider-dot" data-slide="1"></span>
+                <span class="slider-dot" data-slide="2"></span>
+                <span class="slider-dot" data-slide="3"></span>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 w-full max-w-3xl">
+                <div class="stat-card bg-white/10 border border-white/15 rounded-2xl p-4 text-center">
+                    <div class="text-2xl md:text-3xl font-extrabold text-accent">10+</div>
+                    <div class="text-white/60 text-xs mt-1 font-medium">Years Experience</div>
+                </div>
+                <div class="stat-card bg-white/10 border border-white/15 rounded-2xl p-4 text-center">
+                    <div class="text-2xl md:text-3xl font-extrabold text-accent">5000+</div>
+                    <div class="text-white/60 text-xs mt-1 font-medium">Successful Visas</div>
+                </div>
+                <div class="stat-card bg-white/10 border border-white/15 rounded-2xl p-4 text-center">
+                    <div class="text-2xl md:text-3xl font-extrabold text-accent">100+</div>
+                    <div class="text-white/60 text-xs mt-1 font-medium">Destinations</div>
+                </div>
+                <div class="stat-card bg-white/10 border border-white/15 rounded-2xl p-4 text-center">
+                    <div class="text-2xl md:text-3xl font-extrabold text-accent">98%</div>
+                    <div class="text-white/60 text-xs mt-1 font-medium">Satisfied Clients</div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Counter -->
-<section class="counter-section">
-    <div class="container">
-        <div class="counter-grid reveal">
-            <div class="counter-item"><h3 data-target="2500">০</h3><p>সফল ভিসা প্রসেসিং</p></div>
-            <div class="counter-item"><h3 data-target="35">০</h3><p>দেশ কভারেজ</p></div>
-            <div class="counter-item"><h3 data-target="5000">০</h3><p>সন্তুষ্ট গ্রাহক</p></div>
-            <div class="counter-item"><h3 data-target="98">০</h3><p>সফলতার হার (%)</p></div>
-        </div>
-    </div>
-</section>
-
-<!-- Gallery -->
-<section id="gallery" class="section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-images"></i> গ্যালারি</div>
-            <h2 class="section-title">আমাদের কিছু স্মৃতি</h2>
-            <p class="section-subtitle">গ্রাহকদের সাথে কাজ করার মুহূর্ত ও সফল ভিসার নমুনা</p>
-        </div>
-        <div class="gallery-grid reveal">
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Flight"><div class="g-item-overlay"><i class="fas fa-expand-alt" style="margin-right:8px;"></i> ফ্লাইট টিকেটিং</div></div>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Passport"><div class="g-item-overlay"><i class="fas fa-expand-alt" style="margin-right:8px;"></i> পাসপোর্ট স্ট্যাম্প</div></div>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Office"><div class="g-item-overlay"><i class="fas fa-expand-alt" style="margin-right:8px;"></i> আমাদের অফিস</div></div>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Airport"><div class="g-item-overlay"><i class="fas fa-expand-alt" style="margin-right:8px;"></i> এয়ারপোর্ট সার্ভিস</div></div>
-            <div class="g-item"><img src="https://images.unsplash.com/photo-1528127269322-539152f5ae1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Meeting"><div class="g-item-overlay"><i class="fas fa-expand-alt" style="margin-right:8px;"></i> ক্লায়েন্ট মিটিং</div></div>
-        </div>
-    </div>
-</section>
-
-<!-- Testimonials -->
-<section class="section" style="background:var(--gray-100)">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-star"></i> গ্রাহকদের মতামত</div>
-            <h2 class="section-title">আমাদের গ্রাহকরা কী বলেন</h2>
-            <p class="section-subtitle">হাজারো খুশি গ্রাহকের বিশ্বাস অর্জন করেছি আমরা</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testi-card reveal"><div class="testi-quote">"</div><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>কানাডা ভিসা পাওয়ার পেছনে Success Inc. এর ভূমিকা অপরিসীম। তাদের প্রফেশনাল সাপোর্টে আমি খুব সহজেই ভিসা পেয়েছি।</p><div class="testi-author"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Rakib"></div><div><h4>রাকিব হাসান</h4><span>কানাডা ট্যুরিস্ট ভিসা</span></div></div></div>
-            <div class="testi-card reveal"><div class="testi-quote">"</div><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>UK ওয়ার্ক পারমিটের জন্য অনেক এজেন্সির কাছে গিয়েছিলাম, কিন্তু Success Inc. এর মতো স্বচ্ছ সার্ভিস পাইনি। হাইলি রেকমেন্ডেড!</p><div class="testi-author"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Farhana"></div><div><h4>ফারহানা আক্তার</h4><span>UK ওয়ার্ক পারমিট</span></div></div></div>
-            <div class="testi-card reveal"><div class="testi-quote">"</div><div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p>শেনজেন ভিসার জন্য সব ডকুমেন্ট গুছিয়ে দিয়েছে তারা। ফ্লাইট টিকেটও অনেক কম দামে পেয়েছি। ধন্যবাদ Success Inc.!</p><div class="testi-author"><div class="testi-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Tanvir"></div><div><h4>তানভীর আহমেদ</h4><span>শেনজেন ভিসা + ফ্লাইট</span></div></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- Partners -->
-<div class="partners-section">
-    <div class="container">
-        <div class="partners-label">আমাদের এয়ারলাইন পার্টনাররা</div>
-        <div class="partners-grid">
-            <span>BIMAN</span><span>US-BANGLA</span><span>EMIRATES</span><span>QATAR</span><span>TURKISH</span><span>SINGAPORE</span><span>ETIHAD</span><span>SAUDIA</span>
-        </div>
-    </div>
-</div>
-
-<!-- FAQ -->
-<section id="faq" class="section faq-section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-question-circle"></i> সচরাচর জিজ্ঞাসা</div>
-            <h2 class="section-title">প্রায়শই জিজ্ঞাসিত প্রশ্ন</h2>
-            <p class="section-subtitle">ভিসা ও ফ্লাইট টিকেট নিয়ে আপনার সাধারণ প্রশ্নগুলোর উত্তর</p>
-        </div>
-        <div class="faq-list reveal">
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">কানাডা ভিসার জন্য কী কী ডকুমেন্ট লাগে?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>পাসপোর্ট (৬ মাসের বেশি ভ্যালিডিটি), ব্যাংক স্টেটমেন্ট (৩-৬ মাস), জব সার্টিফিকেট/বিজনেস ডকুমেন্ট, নিয়োগপত্র, ট্রাভেল হিস্ট্রি, পরিবারের তথ্য সহ আবেদন ফর্ম প্রয়োজন। বিস্তারিত চেকলিস্ট আমরা প্রদান করি।</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">ভিসা প্রসেসিং কত সময় লাগে?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>দেশ ও ভিসার ধরন অনুযায়ী সময় ভিন্ন। সাধারণত কানাডা ৩-৬ সপ্তাহ, UK ৩-৪ সপ্তাহ, শেনজেন ২-৪ সপ্তাহ এবং অস্ট্রেলিয়া ৪-৮ সপ্তাহ সময় লাগতে পারে।</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">ভিসা রিজেক্ট হলে কী হবে?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>আমরা সর্বোচ্চ চেষ্টা করি রিজেক্ট এড়াতে। তবুও রিজেক্ট হলে আমরা ফ্রি কনসালটেশন দিয়ে পুনরায় আবেদনে সাহায্য করি এবং রিজেকশনের কারণ বিশ্লেষণ করি।</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">ফ্লাইট টিকেট ক্যান্সেল করলে রিফান্ড পাবো?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>হ্যাঁ, এয়ারলাইন্সের ক্যান্সেলেশন পলিসি অনুযায়ী রিফান্ড প্রক্রিয়া করা হয়। আমরা সম্পূর্ণ প্রক্রিয়ায় সহায়তা করি।</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">পেমেন্ট কীভাবে করতে হয়?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>ক্যাশ, বিকাশ, নগদ, রকেট, ব্যাংক ট্রান্সফার — যেকোনো মাধ্যমে পেমেন্ট করতে পারবেন। পেমেন্টের পর সাথে সাথেই রিসিপ্ট দেওয়া হয়।</p></div></div>
-            <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">হজ/ওমরাহ প্যাকেজে কী কী অন্তর্ভুক্ত?<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>ফ্লাইট টিকেট, ভিসা প্রসেসিং, হোটেল একোমোডেশন, ট্রান্সপোর্টেশন, জিয়ারাত গাইড, এবং ২৪/৭ সাপোর্ট — সবই আমাদের প্যাকেজে অন্তর্ভুক্ত।</p></div></div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA Banner -->
-<section class="cta-banner">
-    <div class="container">
-        <h2 class="reveal">আজই আপনার ভ্রমণ পরিকল্পনা শুরু করুন</h2>
-        <p class="reveal">ফ্রি কনসালটেশনের জন্য এখনই আমাদের সাথে যোগাযোগ করুন</p>
-        <div class="reveal" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
-            <a href="https://wa.me/8801613076654?text=হ্যালো,%20আমি%20ভিসা/টিকেট%20নিয়ে%20কথা%20বলতে%20চাই" class="btn-primary" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp করুন</a>
-            <a href="tel:+8809643776654" class="btn-secondary"><i class="fas fa-phone-alt"></i> কল করুন: ০৯৬৪৩-৭৭৬৬৫৪</a>
-        </div>
-    </div>
-</section>
-
-<!-- Contact -->
-<section id="contact" class="section contact-section">
-    <div class="container">
-        <div class="text-center reveal">
-            <div class="section-label"><i class="fas fa-envelope"></i> যোগাযোগ</div>
-            <h2 class="section-title">আজই যোগাযোগ করুন</h2>
-            <p class="section-subtitle">আপনার ভ্রমণ পরিকল্পনা নিয়ে আমাদের সাথে কথা বলুন</p>
-        </div>
-        <div class="contact-grid">
-            <div class="contact-cards reveal-left">
-                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div><div><h4>অফিসের ঠিকানা</h4><p>N.K. Tower (3rd Floor),<br>Shahjalal Upashohor, Sylhet, Bangladesh</p></div></div>
-                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div><div><h4>ফোন নম্বর</h4><p><a href="tel:+8809643776654">+880 9643-776654</a><br><a href="https://wa.me/8801613076654" target="_blank">WhatsApp: +880 1613-076654</a></p></div></div>
-                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-envelope"></i></div><div><h4>ইমেইল</h4><p><a href="mailto:info@successinc.pro.bd">info@successinc.pro.bd</a><br><a href="mailto:visa@successinc.pro.bd">visa@successinc.pro.bd</a></p></div></div>
-                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-clock"></i></div><div><h4>অফিস সময়</h4><p>শনিবার - বৃহস্পতিবার: সকাল ১০:০০ - রাত ৮:০০<br>শুক্রবার: বন্ধ</p></div></div>
-                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-share-alt"></i></div><div><h4>সোশ্যাল মিডিয়া</h4><p style="display:flex;gap:14px;margin-top:6px"><a href="https://www.facebook.com/success.inc24" target="_blank" style="font-size:1.3rem;color:var(--gray-500)"><i class="fab fa-facebook"></i></a><a href="https://www.instagram.com/success.inc22" target="_blank" style="font-size:1.3rem;color:var(--gray-500)"><i class="fab fa-instagram"></i></a><a href="#" style="font-size:1.3rem;color:var(--gray-500)"><i class="fab fa-youtube"></i></a><a href="#" style="font-size:1.3rem;color:var(--gray-500)"><i class="fab fa-tiktok"></i></a></p></div></div>
+    <!-- SERVICES -->
+    <section id="services" class="py-20 md:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Our Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Complete Travel Solutions</h2>
+                <p class="text-gray-500 mt-3 max-w-lg mx-auto">From flights to visas to hotels — we handle everything for your journey.</p>
             </div>
-            <div class="contact-form-wrap reveal-right">
-                <h3>কোটেশনের জন্য আবেদন করুন</h3>
-                <p>ফর্মটি পূরণ করুন, আমরা ৩০ মিনিটের মধ্যে যোগাযোগ করবো</p>
-                <form id="contactForm" onsubmit="handleSubmit(event)">
-                    <div class="form-row"><div class="form-group"><label>আপনার নাম *</label><input type="text" placeholder="পুরো নাম লিখুন" required></div><div class="form-group"><label>ফোন নম্বর *</label><input type="tel" placeholder="০১XXXXXXXXX" required></div></div>
-                    <div class="form-group"><label>ইমেইল</label><input type="email" placeholder="your@email.com"></div>
-                    <div class="form-row"><div class="form-group"><label>কোন দেশে যেতে চান? *</label><select required><option value="">নির্বাচন করুন</option><option>কানাডা</option><option>যুক্তরাজ্য (UK)</option><option>অস্ট্রেলিয়া</option><option>শেনজেন (ইউরোপ)</option><option>মালয়েশিয়া</option><option>থাইল্যান্ড</option><option>সৌদি আরব (হজ/ওমরাহ)</option><option>ভারত</option><option>অন্যান্য</option></select></div><div class="form-group"><label>সেবার ধরন *</label><select required><option value="">নির্বাচন করুন</option><option>ভিসা প্রসেসিং</option><option>ফ্লাইট টিকেট</option><option>ভিসা + ফ্লাইট</option><option>হোটেল বুকিং</option><option>হজ/ওমরাহ প্যাকেজ</option><option>ট্রাভেল ইন্স্যুরেন্স</option></select></div></div>
-                    <div class="form-group"><label>বিস্তারিত লিখুন</label><textarea placeholder="আপনার প্রয়োজনের বিস্তারিত এখানে লিখুন..."></textarea></div>
-                    <button type="submit" class="form-submit"><i class="fas fa-paper-plane"></i> কোটেশনের জন্য আবেদন করুন</button>
-                    <div class="form-toast" id="formToast"><i class="fas fa-check-circle"></i> ধন্যবাদ! আমরা শীঘ্রই যোগাযোগ করবো।</div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Map -->
-<section class="map-section">
-    <div class="container reveal">
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps?q=N.K.+Tower,+Shahjalal+Upashohor,+Sylhet&output=embed" allowfullscreen loading="lazy"></iframe>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-about">
-                <img src="https://z-cdn-media.chatglm.cn/files/23a1c88d-a563-412a-93cd-16926ac38f47.png?auth_key=1876772205-d52c9135e39542c4848eda96af87da71-0-f23f7dab6e181a6551df2cdfdb0d9588" alt="Success Inc.">
-                <p>Success Inc. হলো সিলেটের অন্যতম বিশ্বস্ত ভিসা ও ফ্লাইট টিকেটিং সার্ভিস প্রোভাইডার। আমরা প্রতিটি গ্রাহকের স্বপ্ন পূরণে নিবেদিত।</p>
-                <div class="footer-social">
-                    <a href="https://www.facebook.com/success.inc24" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/success.inc22" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="https://wa.me/8801613076654" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 cursor-pointer group">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=600&q=80" alt="Flight Tickets" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute top-3 right-3 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify w-5 h-5 text-primary" data-icon="lucide:plane"></span>
+                            <h3 class="text-base font-bold text-gray-900">Flight Tickets</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">Domestic & international airlines at the lowest guaranteed prices.</p>
+                        <a href="#" class="inline-flex items-center gap-1 text-primary text-sm font-semibold hover:gap-2.5 transition-all">
+                            Learn More <span class="iconify w-4 h-4" data-icon="lucide:arrow-right"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 cursor-pointer group">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1569235186275-626cb53b83ce?w=600&q=80" alt="Visit Visa" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute top-3 right-3 bg-secondary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Hot</div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify w-5 h-5 text-secondary" data-icon="lucide:passport"></span>
+                            <h3 class="text-base font-bold text-gray-900">Visit Visa</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">Canada, UK, Australia — full document support & free consultation.</p>
+                        <a href="#visa" class="inline-flex items-center gap-1 text-secondary text-sm font-semibold hover:gap-2.5 transition-all">
+                            Learn More <span class="iconify w-4 h-4" data-icon="lucide:arrow-right"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 cursor-pointer group">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel Booking" class="w-full h-full object-cover visa-card-img">
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify w-5 h-5 text-accent" data-icon="lucide:building-2"></span>
+                            <h3 class="text-base font-bold text-gray-900">Hotel Booking</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">Any city in the world — best rate guaranteed with instant confirmation.</p>
+                        <a href="#" class="inline-flex items-center gap-1 text-accent text-sm font-semibold hover:gap-2.5 transition-all">
+                            Learn More <span class="iconify w-4 h-4" data-icon="lucide:arrow-right"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 cursor-pointer group">
+                    <div class="h-44 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80" alt="Work Permit" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute top-3 right-3 bg-coral text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Limited</div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="iconify w-5 h-5 text-coral" data-icon="lucide:briefcase"></span>
+                            <h3 class="text-base font-bold text-gray-900">Work Permit</h3>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">Middle East & Europe — official channels, terms & conditions apply.</p>
+                        <a href="#workpermit" class="inline-flex items-center gap-1 text-coral text-sm font-semibold hover:gap-2.5 transition-all">
+                            Learn More <span class="iconify w-4 h-4" data-icon="lucide:arrow-right"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="footer-col"><h4>দ্রুত লিংক</h4><ul><li><a href="#home"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> হোম</a></li><li><a href="#services"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> সেবাসমূহ</a></li><li><a href="#destinations"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> গন্তব্য</a></li><li><a href="#packages"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> প্যাকেজ</a></li><li><a href="#gallery"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> গ্যালারি</a></li><li><a href="#faq"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> FAQ</a></li><li><a href="#contact"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> যোগাযোগ</a></li></ul></div>
-            <div class="footer-col"><h4>ভিসা সেবা</h4><ul><li><a href="#"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> কানাডা ভিসা</a></li><li><a href="#"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> UK ভিসা</a></li><li><a href="#"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> অস্ট্রেলিয়া ভিসা</a></li><li><a href="#"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> শেনজেন ভিসা</a></li><li><a href="#"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> মালয়েশিয়া ভিসা</a></li><li><a href="#"><i class="fas fa-chevron-right" style="font-size:.65rem"></i> হজ ও ওমরাহ</a></li></ul></div>
-            <div class="footer-col"><h4>নিউজলেটার</h4><p style="font-size:.88rem;margin-bottom:14px">সর্বশেষ অফার ও ভিসা আপডেট সরাসরি আপনার ইনবক্সে পান।</p><div class="newsletter-form"><input type="email" placeholder="আপনার ইমেইল"><button type="button" onclick="this.innerHTML='<i class=\'fas fa-check\'></i>'"><i class="fas fa-paper-plane"></i></button></div></div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Success Inc. — সকল অধিকার সংরক্ষিত। | N.K. Tower (3rd Floor), Shahjalal Upashohor, Sylhet | <a href="tel:+8809643776654" style="color:var(--gray-400)">+880 9643-776654</a> | <a href="mailto:info@successinc.pro.bd" style="color:var(--gray-400)">info@successinc.pro.bd</a></p>
+    </section>
+
+    <!-- VISA HIGHLIGHT -->
+    <section id="visa" class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <span class="inline-block bg-secondary/10 text-secondary text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Visa Services</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-secondary">Canada, UK & Australia Visa</h2>
+                <p class="text-gray-500 mt-3 text-lg">Made easy with our expert guidance</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Canada -->
+                <div class="service-card visa-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&q=80" alt="Canada Visa" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 flex items-center gap-2">
+                            <span class="text-3xl">🇨🇦</span>
+                            <div>
+                                <h3 class="text-white font-bold text-base">Canada Visitor Visa</h3>
+                                <p class="text-white/70 text-xs">Temporary Resident Visa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gray-500 font-medium">Success Rate</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-gray-100 rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width:92%"></div>
+                                </div>
+                                <span class="text-primary font-bold text-sm">92%</span>
+                            </div>
+                        </div>
+                        <h4 class="text-sm font-semibold text-gray-900 mb-3">Required Documents</h4>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-primary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Valid passport (6+ months)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-primary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Bank statement (6 months)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-primary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Passport-size photographs</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-primary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Invitation letter / Travel plan</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-primary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Employment / Business documents</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- UK -->
+                <div class="service-card visa-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80" alt="UK Visa" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 flex items-center gap-2">
+                            <span class="text-3xl">🇬🇧</span>
+                            <div>
+                                <h3 class="text-white font-bold text-base">UK Standard Visitor</h3>
+                                <p class="text-white/70 text-xs">Standard Visitor Visa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gray-500 font-medium">Success Rate</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-gray-100 rounded-full h-2">
+                                    <div class="bg-secondary h-2 rounded-full" style="width:88%"></div>
+                                </div>
+                                <span class="text-secondary font-bold text-sm">88%</span>
+                            </div>
+                        </div>
+                        <h4 class="text-sm font-semibold text-gray-900 mb-3">Required Documents</h4>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-secondary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Valid passport (6+ months)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-secondary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Bank statement (6 months)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-secondary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Passport-size photographs</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-secondary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Invitation / Hotel booking</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-secondary mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Salary certificate / NOC</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Australia -->
+                <div class="service-card visa-card bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1524293581917-878a6d017c71?w=600&q=80" alt="Australia Visa" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 flex items-center gap-2">
+                            <span class="text-3xl">🇦🇺</span>
+                            <div>
+                                <h3 class="text-white font-bold text-base">Australia Tourist Visa</h3>
+                                <p class="text-white/70 text-xs">Subclass 600</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs text-gray-500 font-medium">Success Rate</span>
+                            <div class="flex items-center gap-2">
+                                <div class="w-32 bg-gray-100 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full" style="width:85%"></div>
+                                </div>
+                                <span class="text-accent font-bold text-sm">85%</span>
+                            </div>
+                        </div>
+                        <h4 class="text-sm font-semibold text-gray-900 mb-3">Required Documents</h4>
+                        <ul class="space-y-2.5">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-accent mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Valid passport (6+ months)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-accent mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Bank statement (3 months)</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-accent mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Passport-size photographs</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-accent mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Travel itinerary</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="iconify w-4 h-4 text-accent mt-0.5 shrink-0" data-icon="lucide:check-circle-2"></span>Form 54 & purpose statement</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="https://wa.me/8801613076654?text=I%20want%20free%20visa%20consultation" target="_blank"
+                   class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-xl hover:shadow-accent/30">
+                    <span class="iconify w-5 h-5" data-icon="lucide:message-circle"></span>
+                    Get Free Consultation
+                </a>
+            </div>
         </div>
-    </div>
-</footer>
+    </section>
 
-<!-- Floating Buttons -->
-<a href="https://wa.me/8801613076654?text=হ্যালো,%20Success%20Inc.%20থেকে%20ভিসা/টিকেট%20নিয়ে%20জানতে%20চাই" class="floating-wa" target="_blank"><i class="fab fa-whatsapp"></i> <span>WhatsApp করুন</span></a>
-<a href="tel:+8809643776654" class="floating-call"><i class="fas fa-phone-alt"></i> <span>কল করুন</span></a>
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+    <!-- PACKAGES -->
+    <section id="packages" class="py-20 md:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <span class="inline-block bg-accent/10 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Popular Packages</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Exclusive Travel Packages</h2>
+                <p class="text-gray-500 mt-3 max-w-lg mx-auto">Handpicked deals for your favorite destinations</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Package 1 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&q=80" alt="Canada Package" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute top-3 left-3 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full">BESTSELLER</div>
+                        <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                            <span class="text-primary font-extrabold text-lg">৳1,85,000</span>
+                            <span class="text-gray-400 text-xs line-through ml-1">৳2,20,000</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 text-xs text-gray-400 mb-2">
+                            <span class="iconify w-3.5 h-3.5" data-icon="lucide:map-pin"></span> Canada · 15 Days
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-3">Canada Explorer Package</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] bg-primary/10 text-primary px-2.5 py-1 rounded-full font-medium">Flight Included</span>
+                            <span class="text-[11px] bg-primary/10 text-primary px-2.5 py-1 rounded-full font-medium">Hotel 14 Nights</span>
+                            <span class="text-[11px] bg-primary/10 text-primary px-2.5 py-1 rounded-full font-medium">Visa Support</span>
+                        </div>
+                        <a href="https://wa.me/8801613076654?text=I%20am%20interested%20in%20Canada%20Explorer%20Package" target="_blank" class="block text-center bg-primary hover:bg-primary-dark text-white py-3 rounded-xl font-semibold text-sm transition-all">
+                            Book This Package
+                        </a>
+                    </div>
+                </div>
+                <!-- Package 2 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80" alt="UK Package" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute top-3 left-3 bg-secondary text-white text-[10px] font-bold px-3 py-1 rounded-full">TRENDING</div>
+                        <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                            <span class="text-secondary font-extrabold text-lg">৳1,55,000</span>
+                            <span class="text-gray-400 text-xs line-through ml-1">৳1,90,000</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 text-xs text-gray-400 mb-2">
+                            <span class="iconify w-3.5 h-3.5" data-icon="lucide:map-pin"></span> United Kingdom · 10 Days
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-3">UK Discovery Tour</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] bg-secondary/10 text-secondary px-2.5 py-1 rounded-full font-medium">Flight Included</span>
+                            <span class="text-[11px] bg-secondary/10 text-secondary px-2.5 py-1 rounded-full font-medium">Hotel 9 Nights</span>
+                            <span class="text-[11px] bg-secondary/10 text-secondary px-2.5 py-1 rounded-full font-medium">Visa Support</span>
+                        </div>
+                        <a href="https://wa.me/8801613076654?text=I%20am%20interested%20in%20UK%20Discovery%20Tour" target="_blank" class="block text-center bg-secondary hover:bg-secondary-dark text-white py-3 rounded-xl font-semibold text-sm transition-all">
+                            Book This Package
+                        </a>
+                    </div>
+                </div>
+                <!-- Package 3 -->
+                <div class="service-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80" alt="Dubai Package" class="w-full h-full object-cover visa-card-img">
+                        <div class="absolute top-3 left-3 bg-accent text-white text-[10px] font-bold px-3 py-1 rounded-full">VALUE DEAL</div>
+                        <div class="absolute bottom-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1.5">
+                            <span class="text-accent font-extrabold text-lg">৳85,000</span>
+                            <span class="text-gray-400 text-xs line-through ml-1">৳1,10,000</span>
+                        </div>
+                    </div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-1 text-xs text-gray-400 mb-2">
+                            <span class="iconify w-3.5 h-3.5" data-icon="lucide:map-pin"></span> Dubai · 5 Days
+                        </div>
+                        <h3 class="font-bold text-gray-900 mb-3">Dubai City Break</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-[11px] bg-accent/10 text-accent-dark px-2.5 py-1 rounded-full font-medium">Flight Included</span>
+                            <span class="text-[11px] bg-accent/10 text-accent-dark px-2.5 py-1 rounded-full font-medium">Hotel 4 Nights</span>
+                            <span class="text-[11px] bg-accent/10 text-accent-dark px-2.5 py-1 rounded-full font-medium">City Tour</span>
+                        </div>
+                        <a href="https://wa.me/8801613076654?text=I%20am%20interested%20in%20Dubai%20City%20Break" target="_blank" class="block text-center bg-accent hover:bg-accent-dark text-white py-3 rounded-xl font-semibold text-sm transition-all">
+                            Book This Package
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="https://wa.me/8801613076654?text=I%20want%20to%20see%20more%20packages" target="_blank" class="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all text-sm">
+                    View All Packages <span class="iconify w-4 h-4" data-icon="lucide:arrow-right"></span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-<script>
-// Preloader
-window.addEventListener('load',()=>{setTimeout(()=>document.getElementById('preloader').classList.add('hidden'),1500)});
+    <!-- WORK PERMIT -->
+    <section id="workpermit" class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-up">
+                    <span class="inline-block bg-coral/10 text-coral text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Work Permit</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4">Work Opportunities in<br>Middle East & Europe</h2>
+                    <p class="text-gray-500 mb-8 leading-relaxed">Through official channels and legal documentation. Terms and conditions apply.</p>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="country-badge inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2.5 text-sm font-medium text-gray-700 cursor-default">
+                            🇸🇦 Saudi Arabia
+                        </span>
+                        <span class="country-badge inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2.5 text-sm font-medium text-gray-700 cursor-default">
+                            🇦🇪 Dubai
+                        </span>
+                        <span class="country-badge inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2.5 text-sm font-medium text-gray-700 cursor-default">
+                            🇶🇦 Qatar
+                        </span>
+                        <span class="country-badge inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2.5 text-sm font-medium text-gray-700 cursor-default">
+                            🇩🇪 Germany
+                        </span>
+                        <span class="country-badge inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2.5 text-sm font-medium text-gray-700 cursor-default">
+                            🇵🇱 Poland
+                        </span>
+                        <span class="country-badge inline-flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-full px-4 py-2.5 text-sm font-medium text-gray-700 cursor-default">
+                            🇷🇴 Romania
+                        </span>
+                    </div>
+                    <div class="bg-accent-light border-2 border-accent/30 rounded-2xl p-5 mb-8">
+                        <div class="flex items-start gap-3">
+                            <span class="iconify w-6 h-6 text-accent shrink-0 mt-0.5" data-icon="lucide:shield-check"></span>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-1">Important Notice</h4>
+                                <p class="text-gray-600 text-sm leading-relaxed">We only work through legal documents and official channels. No illegal or unethical processes are involved. All processing follows government regulations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="tel:+8809735776654"
+                       class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-xl hover:shadow-primary/30">
+                        <span class="iconify w-5 h-5" data-icon="lucide:phone-call"></span>
+                        Call for Details — +880 9735 776654
+                    </a>
+                </div>
+                <div class="fade-up relative">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=700&q=80" alt="Work Permit" class="w-full h-[400px] md:h-[500px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 float-anim hidden md:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                                <span class="iconify w-6 h-6 text-primary" data-icon="lucide:users"></span>
+                            </div>
+                            <div>
+                                <p class="font-extrabold text-gray-900 text-xl">500+</p>
+                                <p class="text-gray-500 text-xs">Workers Placed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -top-6 -right-6 bg-white rounded-2xl shadow-xl p-5 float-anim hidden md:block" style="animation-delay:1s">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                                <span class="iconify w-6 h-6 text-accent" data-icon="lucide:globe"></span>
+                            </div>
+                            <div>
+                                <p class="font-extrabold text-gray-900 text-xl">6+</p>
+                                <p class="text-gray-500 text-xs">Countries</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Particles
-(function(){const c=document.getElementById('particles');for(let i=0;i<25;i++){const p=document.createElement('div');p.classList.add('particle');p.style.left=Math.random()*100+'%';p.style.animationDuration=(Math.random()*8+6)+'s';p.style.animationDelay=(Math.random()*10)+'s';p.style.width=p.style.height=(Math.random()*3+2)+'px';c.appendChild(p)}})();
+    <!-- WHY CHOOSE US -->
+    <section class="py-20 md:py-28 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Why Us</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why Choose Success Inc.?</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center fade-up group">
+                    <div class="w-18 h-18 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 w-[72px] h-[72px] group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                        <span class="iconify w-8 h-8 text-primary group-hover:text-white transition-colors" data-icon="lucide:award"></span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Experienced & Trusted</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">10+ years in Sylhet with thousands of successful clients.</p>
+                </div>
+                <div class="text-center fade-up group">
+                    <div class="w-18 h-18 bg-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-5 w-[72px] h-[72px] group-hover:bg-secondary group-hover:scale-110 transition-all duration-300">
+                        <span class="iconify w-8 h-8 text-secondary group-hover:text-white transition-colors" data-icon="lucide:zap"></span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Fast Processing</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Visa application to approval — with maximum speed.</p>
+                </div>
+                <div class="text-center fade-up group">
+                    <div class="w-18 h-18 bg-accent/10 rounded-2xl flex items-center justify-center mx-auto mb-5 w-[72px] h-[72px] group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                        <span class="iconify w-8 h-8 text-accent group-hover:text-white transition-colors" data-icon="lucide:headphones"></span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Direct Support</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">24/7 assistance via WhatsApp & phone from our local Sylhet office.</p>
+                </div>
+                <div class="text-center fade-up group">
+                    <div class="w-18 h-18 bg-coral/10 rounded-2xl flex items-center justify-center mx-auto mb-5 w-[72px] h-[72px] group-hover:bg-coral group-hover:scale-110 transition-all duration-300">
+                        <span class="iconify w-8 h-8 text-coral group-hover:text-white transition-colors" data-icon="lucide:wallet"></span>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 mb-2">Affordable Pricing</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">No hidden charges. All costs disclosed upfront.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Hero Slider
-let currentSlide=0;const slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-slider-dots span');
-function goToSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
-setInterval(()=>goToSlide((currentSlide+1)%slides.length),5000);
+    <!-- REVIEWS -->
+    <section id="reviews" class="py-20 md:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14 fade-up">
+                <span class="inline-block bg-accent/10 text-accent text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Testimonials</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">What Our Clients Say</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="service-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-5">"I chose Success Inc. for my Canada Visitor Visa. Their document support and step-by-step guidance made the whole process smooth. Got my visa approved on the first attempt! Highly recommended."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" alt="Review" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Rakib Ahmed</p>
+                            <p class="text-gray-400 text-xs">Sylhet · Canada Visa</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-5">"Booked flight tickets and hotel for my UK trip through Success Inc. Got the best deal I could find anywhere. Very transparent pricing and excellent customer service. Will definitely come back!"</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Review" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Farhana Akter</p>
+                            <p class="text-gray-400 text-xs">Dhaka · UK Trip</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card bg-gray-50 rounded-2xl p-6 border border-gray-100">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-gray-200" data-icon="lucide:star"></span>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed mb-5">"Booked my Dubai flight from here. Cheapest rate I found and the customer support was amazing. They respond on WhatsApp anytime. Very professional team."</p>
+                    <div class="flex items-center gap-3">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" alt="Review" class="w-11 h-11 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-gray-900 text-sm">Tanvir Hasan</p>
+                            <p class="text-gray-400 text-xs">Sylhet · Flight Ticket</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-3">
+                <svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                <div class="bg-gray-50 border border-gray-200 rounded-full px-6 py-2.5 flex items-center gap-2">
+                    <div class="flex items-center gap-0.5">
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                        <span class="iconify w-4 h-4 text-accent" data-icon="lucide:star"></span>
+                    </div>
+                    <span class="text-gray-700 text-sm font-semibold">Our Google Rating: <span class="text-accent">4.8/5</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-// Navbar scroll
-const navbar=document.getElementById('navbar'),scrollTopBtn=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>{
-    navbar.classList.toggle('scrolled',window.scrollY>50);
-    scrollTopBtn.classList.toggle('show',window.scrollY>500);
-    const sections=document.querySelectorAll('section[id]');const navLinks=document.querySelectorAll('.nav-links a:not(.nav-cta)');let current='';
-    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)current=s.getAttribute('id')});
-    navLinks.forEach(link=>{link.classList.remove('active');if(link.getAttribute('href')==='#'+current)link.classList.add('active')});
-});
+    <!-- CTA BANNER -->
+    <section class="py-16 md:py-20 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-72 h-72 bg-accent rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/3 translate-y-1/3"></div>
+        </div>
+        <div class="relative max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                Contact Us Today<br>
+                <span class="text-accent">Get Free Consultation</span>
+            </h2>
+            <p class="text-white/60 mb-8 max-w-xl mx-auto">We're always by your side to make your dream journey a reality.</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="https://wa.me/8801613076654" target="_blank"
+                   class="inline-flex items-center gap-2 bg-accent hover:bg-accent-dark text-white px-8 py-4 rounded-full font-bold transition-all hover:shadow-xl hover:shadow-black/20">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp: +880 1613 076654
+                </a>
+                <a href="tel:+8809735776654"
+                   class="inline-flex items-center gap-2 bg-white hover:bg-gray-100 text-primary px-8 py-4 rounded-full font-bold transition-all hover:shadow-xl">
+                    <span class="iconify w-5 h-5" data-icon="lucide:phone"></span>
+                    Call Now
+                </a>
+            </div>
+        </div>
+    </section>
 
-// Mobile menu
-function toggleMenu(){document.getElementById('navLinks').classList.toggle('show')}
-document.querySelectorAll('.nav-links a').forEach(link=>{link.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('show'))});
+    <!-- INQUIRY FORM -->
+    <section id="contact" class="py-20 md:py-28 bg-gray-50">
+        <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10 fade-up">
+                <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">Get In Touch</span>
+                <h2 class="text-3xl md:text-3xl font-bold text-gray-900">Inquiry / Booking Form</h2>
+                <p class="text-gray-500 mt-2 text-sm">Success Inc. — Travels & Tourism</p>
+            </div>
+            <form id="inquiryForm" class="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-lg space-y-5">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Full Name <span class="text-coral">*</span></label>
+                    <input type="text" id="fname" required placeholder="Enter your full name"
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Phone Number <span class="text-coral">*</span></label>
+                    <input type="tel" id="fphone" required placeholder="+880..."
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Email</label>
+                    <input type="email" id="femail" placeholder="example@email.com"
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Service Type <span class="text-coral">*</span></label>
+                    <select id="fservice" required
+                            class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all appearance-none"
+                            style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%236b7280%22 viewBox=%220 0 16 16%22><path d=%22M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%22/></svg>');background-repeat:no-repeat;background-position:right 1rem center;">
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Flight Ticket">Flight Ticket</option>
+                        <option value="Canada Visa">Canada Visitor Visa</option>
+                        <option value="UK Visa">UK Standard Visitor Visa</option>
+                        <option value="Australia Visa">Australia Tourist Visa</option>
+                        <option value="Hotel Booking">Hotel Booking</option>
+                        <option value="Work Permit">Work Permit</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Preferred Date</label>
+                        <input type="date" id="fdate"
+                               class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-1.5">Number of Travelers</label>
+                        <select id="ftravelers"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all appearance-none"
+                                style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 fill=%22%236b7280%22 viewBox=%220 0 16 16%22><path d=%22M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%22/></svg>');background-repeat:no-repeat;background-position:right 1rem center;">
+                            <option value="1">1 Person</option>
+                            <option value="2">2 Persons</option>
+                            <option value="3">3 Persons</option>
+                            <option value="4">4 Persons</option>
+                            <option value="5">5 Persons</option>
+                            <option value="6+">6+ Persons</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1.5">Special Requirements / Comments</label>
+                    <textarea id="fcomment" rows="3" placeholder="Any special information..."
+                              class="w-full px-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-all resize-none"></textarea>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button type="submit"
+                            class="flex-1 bg-primary hover:bg-primary-dark text-white py-3.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg">
+                        Submit Form
+                    </button>
+                    <button type="button" id="whatsappSend"
+                            class="flex-1 bg-[#25D366] hover:bg-[#20bd5a] text-white py-3.5 rounded-xl font-semibold text-sm transition-all hover:shadow-lg flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Send via WhatsApp
+                    </button>
+                </div>
+                <div id="formSuccess" class="hidden bg-primary/10 border border-primary/20 rounded-xl p-4 text-center">
+                    <span class="iconify w-8 h-8 text-primary mx-auto mb-1" data-icon="lucide:check-circle-2"></span>
+                    <p class="text-primary font-semibold text-sm">Thank you! We will contact you soon.</p>
+                </div>
+            </form>
+        </div>
+    </section>
 
-// Bangla numbers
-function toBn(n){return String(n).replace(/\d/g,d=>'০১২৩৪৫৬৭৮৯'[d])}
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+                <div>
+                    <a href="#" class="flex items-center gap-2.5 mb-4">
+                        <img src="https://images.unsplash.com/vector-1777720578127-ec36d4954ece?q=80&w=1181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Success Inc." class="h-10 w-10 rounded-full object-cover">
+                        <div class="leading-tight">
+                            <span class="text-white font-bold text-lg block">Success Inc.</span>
+                            <span class="text-gray-400 text-[10px] tracking-widest uppercase">Travels & Tourism</span>
+                        </div>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-5">Sylhet's trusted travel partner. Over 10 years of experience making your dream journeys easy and affordable.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
+                            <span class="iconify w-4 h-4" data-icon="lucide:facebook"></span>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
+                            <span class="iconify w-4 h-4" data-icon="lucide:instagram"></span>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-white/10 hover:bg-primary rounded-lg flex items-center justify-center transition-colors">
+                            <span class="iconify w-4 h-4" data-icon="lucide:youtube"></span>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#home" class="text-gray-400 text-sm hover:text-accent transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-400 text-sm hover:text-accent transition-colors">Flight Tickets</a></li>
+                        <li><a href="#visa" class="text-gray-400 text-sm hover:text-accent transition-colors">Visit Visa</a></li>
+                        <li><a href="#packages" class="text-gray-400 text-sm hover:text-accent transition-colors">Travel Packages</a></li>
+                        <li><a href="#workpermit" class="text-gray-400 text-sm hover:text-accent transition-colors">Work Permit</a></li>
+                        <li><a href="#contact" class="text-gray-400 text-sm hover:text-accent transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact Information</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="iconify w-5 h-5 text-accent mt-0.5 shrink-0" data-icon="lucide:map-pin"></span>
+                            <span class="text-gray-400 text-sm">N.K. Tower (3rd Floor), Shahjalal Uptown, Sylhet</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="iconify w-5 h-5 text-accent shrink-0" data-icon="lucide:phone"></span>
+                            <a href="tel:+8809735776654" class="text-gray-400 text-sm hover:text-accent transition-colors">+880 9735 776654</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="iconify w-5 h-5 text-accent shrink-0" data-icon="lucide:mail"></span>
+                            <a href="mailto:info@successinc.pro.bd" class="text-gray-400 text-sm hover:text-accent transition-colors">info@successinc.pro.bd</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="iconify w-5 h-5 text-accent shrink-0" data-icon="lucide:globe"></span>
+                            <a href="https://successinc.pro.bd" target="_blank" class="text-gray-400 text-sm hover:text-accent transition-colors">successinc.pro.bd</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+                <p class="text-center text-gray-500 text-sm">&copy; 2025 Success Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-// Hero counters
-setTimeout(()=>{
-    [{el:'counter1',t:2500,s:'+'},{el:'counter2',t:35,s:'+'},{el:'counter3',t:5000,s:'+'},{el:'counter4',t:98,s:'%'}].forEach(({el,t,s})=>{
-        let c=0;const step=t/125;const timer=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(timer)}document.getElementById(el).textContent=toBn(Math.floor(c))+s},16)
-    })
-},2200);
+    <!-- SCRIPTS -->
+    <script>
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        let slideInterval;
 
-// Section counters
-let cDone=false;
-function animCounters(){if(cDone)return;const section=document.querySelector('.counter-section');if(!section)return;if(section.getBoundingClientRect().top<window.innerHeight){cDone=true;document.querySelectorAll('.counter-item h3[data-target]').forEach(el=>{const t=+el.dataset.target;let c=0;const step=t/125;const timer=setInterval(()=>{c+=step;if(c>=t){c=t;clearInterval(timer)}el.textContent=toBn(Math.floor(c))+'+'},16)})}}
-window.addEventListener('scroll',animCounters);
+        function goToSlide(i) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slides[i].classList.add('active');
+            dots[i].classList.add('active');
+            currentSlide = i;
+        }
+        function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+        function startSlider() { slideInterval = setInterval(nextSlide, 5000); }
 
-// Scroll reveal
-function handleReveal(){document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-80)el.classList.add('active')})}
-window.addEventListener('scroll',handleReveal);window.addEventListener('load',()=>setTimeout(handleReveal,100));
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                goToSlide(parseInt(dot.dataset.slide));
+                startSlider();
+            });
+        });
+        startSlider();
 
-// FAQ
-function toggleFaq(el){const item=el.parentElement;const wasActive=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('active'));if(!wasActive)item.classList.add('active')}
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('navbar-scrolled', window.scrollY > 80);
+        });
 
-// Contact form
-function handleSubmit(e){e.preventDefault();const toast=document.getElementById('formToast');toast.classList.add('show');e.target.reset();setTimeout(()=>toast.classList.remove('show'),5000)}
-</script>
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenuBtn = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            mobileMenu.classList.add('open');
+            menuOverlay.classList.remove('hidden');
+            setTimeout(() => menuOverlay.style.opacity = '1', 10);
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
+            menuOverlay.style.opacity = '0';
+            setTimeout(() => menuOverlay.classList.add('hidden'), 300);
+            document.body.style.overflow = '';
+        }
+        menuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+        document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+
+        const fadeEls = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        fadeEls.forEach(el => observer.observe(el));
+
+        const form = document.getElementById('inquiryForm');
+        const formSuccess = document.getElementById('formSuccess');
+
+        function getFormData() {
+            const n = document.getElementById('fname').value.trim();
+            const p = document.getElementById('fphone').value.trim();
+            const e = document.getElementById('femail').value.trim();
+            const s = document.getElementById('fservice').value;
+            const d = document.getElementById('fdate').value;
+            const t = document.getElementById('ftravelers').value;
+            const c = document.getElementById('fcomment').value.trim();
+            let m = `🔔 *New Inquiry — Success Inc.*\n\n👤 *Name:* ${n}\n📱 *Phone:* ${p}\n`;
+            if (e) m += `📧 *Email:* ${e}\n`;
+            m += `🛎️ *Service:* ${s}\n`;
+            if (d) m += `📅 *Date:* ${d}\n`;
+            m += `👥 *Travelers:* ${t}\n`;
+            if (c) m += `💬 *Notes:* ${c}\n`;
+            return m;
+        }
+
+        document.getElementById('whatsappSend').addEventListener('click', () => {
+            const n = document.getElementById('fname').value.trim();
+            const p = document.getElementById('fphone').value.trim();
+            const s = document.getElementById('fservice').value;
+            if (!n || !p || !s) {
+                if (!n) document.getElementById('fname').classList.add('border-coral');
+                if (!p) document.getElementById('fphone').classList.add('border-coral');
+                if (!s) document.getElementById('fservice').classList.add('border-coral');
+                setTimeout(() => {
+                    ['fname','fphone','fservice'].forEach(id => document.getElementById(id).classList.remove('border-coral'));
+                }, 2000);
+                return;
+            }
+            window.open('https://wa.me/8801613076654?text=' + encodeURIComponent(getFormData()), '_blank');
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formSuccess.classList.remove('hidden');
+            form.reset();
+            setTimeout(() => formSuccess.classList.add('hidden'), 5000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
