@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://successinc.pro.bd/sitemap.xml
